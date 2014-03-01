@@ -1,0 +1,50 @@
+<div class="page">
+	<div class="banner">
+		<div class="banner_back">
+			<%= image_tag("bannerBack.png", alt: "Banner", id: "bannerBack") %>
+		</div>
+	</div>
+	<div class="image_back">
+			<%= image_tag("imageBack.jpg", alt: "Image", id: "imageBack") %>
+	</div>
+	<div class="step_block_1">
+		<div class="step_1">
+			<div class="step_1_text">
+				STEP 1 - UPLOAD A PIC
+			</div>
+			<div class="upload_method">
+				<%= image_tag("fbUpload.png", alt: "FB Upload", id:"fbUpload") %>
+				<%= image_tag("deviceUpload.png", alt: "Device Upload", id:"deviceUpload") %>
+				<%= image_tag("camUpload.png", alt: "Cam Upload", id:"camUpload") %>
+			</div>
+		</div>
+		<div class="step_2">
+			<div class="step_2_text">
+				STEP 2 - TYPE YOUR MESSAGE
+			</div>
+			<div class="user_message">
+				<%= text_area_tag 'post', "Message Here!", rows: 8, cols: 40 %>
+			</div>
+		</div>
+	</div>
+	<div class="step_block_2">
+		<div class="step_3">
+			<div class="step_3_text">
+					STEP 3 - ADD SPLASH
+			</div>
+			<div class="splash_options">
+				<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
+				<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
+				<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
+				<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
+				<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
+				<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
+				<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
+			</div>
+		</div>
+		<div class="step_4">
+			<%= button_tag "Add Splash" %>
+			<%= button_tag "DONE" %>
+		</div>
+	</div>
+</div>

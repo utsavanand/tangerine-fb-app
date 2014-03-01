@@ -1,0 +1,2 @@
+module AppMainHelper
+end

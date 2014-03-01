@@ -1,0 +1,76 @@
+
+.banner_back{
+	text-align: center;
+}
+
+.image_back{
+	margin-top: 1%;
+	text-align: center;
+}
+
+#bannerBack{
+	height: 160px;
+	width: 100%;
+}
+
+#imageBack{
+	height: 10%;
+	width: 30%;
+}
+
+.page{
+	margin: auto;
+	height: 100%;
+	width: 760px;
+	text-align: center;
+}
+
+.step_block_1{
+	width:100%;
+}
+
+.step_block_2{
+	width: 100%;
+}
+
+.step_1{
+	display: inline-block;
+	margin-top:2%;
+	width: 49%;
+	text-align: left;
+}
+
+.step_2{
+	display: inline-block;
+	margin-top:2%;
+	width: 49%;
+	text-align: right;
+}
+
+.step_1 .upload_method img{
+	margin: 2%;
+	height: 25%;
+	width: 28%;
+}
+
+.step_3{
+	display: inline-block;
+	margin-top: 2%;
+	text-align: left;
+	width: 78%;
+}
+
+.step_3 .splash_options{
+	margin-top: 2%;
+}
+
+.step_3 .splash_options img{
+	height: 10%;
+	width: 12%;
+}
+
+.step_4{
+	display: inline-block;
+	text-align: right;
+	width: 20%
+}
