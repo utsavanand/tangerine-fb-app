@@ -4,18 +4,34 @@
 			<%= image_tag("bannerBack.png", alt: "Banner", id: "bannerBack") %>
 		</div>
 	</div>
-	<div class="image_back">
-			<%= image_tag("imageBack.jpg", alt: "Image", id: "imageBack") %>
+	<div class="image_back" style="position: relative; left: 0; top: 0;" id="image_back">
+		<%= image_tag("imageBack.jpg", alt: "Image", id: "imageBack", style: "position: relative; top: 0; left: 0;") %>
+		<% if @u %>
+			<%= image_tag @u.image_url, style: "position: absolute; top: 18px; left: 283px;", class: "rotateX" %>
+		<% end %>
 	</div>
 	<div class="step_block_1">
 		<div class="step_1">
 			<div class="step_1_text">
 				STEP 1 - UPLOAD A PIC
 			</div>
-			<div class="upload_method">
-				<%= image_tag("fbUpload.png", alt: "FB Upload", id:"fbUpload") %>
-				<%= image_tag("deviceUpload.png", alt: "Device Upload", id:"deviceUpload") %>
-				<%= image_tag("camUpload.png", alt: "Cam Upload", id:"camUpload") %>
+			<div class="upload_methods">
+				<div class="upload-method" id="fb-upload">
+					<%= image_tag("fbUpload.png") %>
+				</div>
+				<div class="upload-method" id="device-upload">
+					<%= form_tag({action: :index}, multipart: true, id: "form-img-upload") do %>
+						<div class="image-upload">
+						    <label for="file-input">
+								<%= image_tag("deviceUpload.png") %>
+						    </label>
+						    	<%= file_field_tag 'file-input' %>
+						</div>
+					<% end %>
+				</div>
+				<div class="upload-method" id="cam-upload">
+					<%= image_tag("camUpload.png") %>
+				</div>
 			</div>
 		</div>
 		<div class="step_2">
@@ -33,18 +49,57 @@
 					STEP 3 - ADD SPLASH
 			</div>
 			<div class="splash_options">
-				<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
-				<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
-				<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
-				<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
-				<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
-				<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
-				<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
+				<div class="splash-image" id="splash1">
+					<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
+				</div>
+				<div class="splash-image" id="splash2">
+					<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
+				</div>
+				<div class="splash-image" id="splash3">
+					<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
+				</div>
+				<div class="splash-image" id="splash4">
+					<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
+				</div>
+				<div class="splash-image" id="splash5">
+					<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
+				</div>
+				<div class="splash-image" id="splash6">
+					<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
+				</div>
+				<div class="splash-image" id="splash7">
+					<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
+				</div>
 			</div>
 		</div>
 		<div class="step_4">
-			<%= button_tag "Add Splash" %>
-			<%= button_tag "DONE" %>
+			<%= link_to "Done", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("input[type=file]").change(function(){
+			$("#form-img-upload").submit();
+		});
+	});
+	
+	$(".splash-image").click(function(){
+		$("#image_back .added_splash").remove();
+		var imgName = $(this).attr("id")
+		// $("#image_back").append('<%= image_tag('splash7.png', alt: 'Splash 7', id:'splash7', class: 'added_splash', style: 'position: absolute; top: 55px; left: 316px; height: 80px;, width:80px;') %>');
+		$("#image_back").append("<img src='/assets/"+imgName+".png' alt='Splash 7', id='splash7', class='added_splash', style='position: absolute; top: 55px; left: 316px; height: 80px;, width:80px;' />");
+		$("#image_back").html2canvas({
+	    onrendered : function(canvas) {
+	    var img = canvas.toDataURL();
+	    localStorage["avatar"] = img;
+	    // img now contains an IMG URL, you can do various things with it, but most simply:
+	            }
+	        });
+	});
+
+	$("#next-page").click(function(){
+
+	});
+</script>

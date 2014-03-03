@@ -1,0 +1,27 @@
+<div class="action-page">
+	<div class="avatar">
+	</div>
+	<div class="action-options">
+		<div class="action-option" id="acop1">
+			<a id="download-image-link">
+				<%= image_tag("acop1.png", alt: "Action 1", id:"acop1") %>
+			</a>	
+		</div>
+		<div class="action-option" id="acop2">
+			<%= image_tag("acop2.png", alt: "Action 2", id:"acop2") %>
+		</div>
+		<div class="action-option" id="acop3">
+			<%= image_tag("acop3.png", alt: "Action 3", id:"acop3") %>
+		</div>
+		<div class="action-option" id="acop4">
+			<%= image_tag("acop4.png", alt: "Action 4", id:"acop4") %>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var avatarImg = localStorage["avatar"];
+$(".avatar").append("<img src='"+avatarImg+"' id='avatar-image'/>");
+$("#download-image-link").prop("href",avatarImg);
+$("#download-image-link").prop("download","holi-avatar.png");
+</script>

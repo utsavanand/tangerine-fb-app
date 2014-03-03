@@ -1,4 +1,5 @@
 TangerineFbApp::Application.routes.draw do
+  post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,6 +7,7 @@ TangerineFbApp::Application.routes.draw do
   # root 'welcome#index'
 
   match "app_main/" => "app_main#index", via: [:get, :post]
+  match "app_main/action" => "app_main#actionPage", via: [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
