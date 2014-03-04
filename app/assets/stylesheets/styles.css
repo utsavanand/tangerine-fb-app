@@ -14,8 +14,8 @@
 }
 
 #imageBack{
-	height: 10%;
-	width: 30%;
+	height: 30%;
+	width: 60%;
 }
 
 .page{
@@ -97,15 +97,21 @@
     display: none;
 }
 
-.rotateX{
+.image-upload{
+	display: inline;
+}
+
+.rotateX, .text-rotateX{
 	-webkit-transform: rotate(-6deg);
     -moz-transform: rotate(-6deg);
     -o-transform: rotate(-6deg);
     -ms-transform: rotate(-6deg);
     transform: rotate(-6deg);
-    width: 113px;
-    height: 113px;
+}
 
+.rotateX{
+    width: 26.5%;
+    height: 51%;
 }
 
  .actions-options{
@@ -122,9 +128,14 @@
 	width: 20%;
 }
 
-
 .upload-method{
 	display: inline;
+}
+
+.upload-method img{
+	height: 27%;
+	width: 27%;
+	margin-right: 4%; 
 }
 
 form, form div { display: inline; }
