@@ -1,99 +1,190 @@
 <div class="page">
-	<div class="banner">
-		<div class="banner_back">
-			<%= image_tag("bannerBack.png", alt: "Banner", id: "bannerBack") %>
+	<div class="app-area">
+		<div class="banner">
+			<div class="banner_back">
+				<%= image_tag("bannerBack.png", alt: "Banner", id: "bannerBack") %>
+			</div>
+			<div class="banner_text">
+				<font size="6em">
+					<font color="red">H</font>
+					<font color="blue">A</font>
+					<font color="green">P</font>
+					<font color="orange">P</font>
+					<font color="purple">Y</font>&nbsp;&nbsp;
+					<font color="brown">H</font>
+					<font color="pink">O</font>
+					<font color="violet">L</font>
+					<font color="green">I</font>
+					<font color="magenta">!</font>
+				</font>
+				<font size="4em" color="orange">&nbsp;&nbsp;COLOR YOUR FRIENDS THE VIRTUAL WAY</font>
+			</div>
+		</div>
+		<div class="image_back" style="position: relative; left: 0; top: 0;" id="image_back">
+			<%= image_tag("imageBack.jpg", alt: "Image", id: "imageBack", style: "position: relative; top: 0; left: 0;") %>
+			<% if @u %>
+				<%= image_tag @u.image_url, style: "position: absolute; top: 51px; left: 208px;", class: "rotateX"%>
+			<% end %>
+			<input type="text" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 67%; left: 27%; height:22px; width:26%; color: #FF0000;">
+		</div>
+		<div class="step_block_1">
+			<div class="step_1">
+				<div class="step_1_text">
+					STEP 1 - UPLOAD A PIC
+				</div>
+				<div class="upload_methods">
+					<div class="upload-method" id="fb-upload">
+						<%= image_tag("fbUpload.png") %>
+						<div class="upload-method-text"> Upload From Facebook! </div>
+					</div>
+					<div class="upload-method" id="device-upload">
+						<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
+							<div class="image-upload">
+							    <label for="file-input">
+									<%= image_tag("deviceUpload.png") %>
+							    </label>
+							    	<%= file_field_tag 'file-input' %>
+							</div>
+						<% end %>
+							<div class="upload-method-text"> Upload From Device!</div>
+					</div>
+					<div class="upload-method" id="cam-upload">
+						<%= image_tag("camUpload.png") %>
+						<div class="upload-method-text"> Upload From Webcam!</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="step_block_2">
+			<div class="step_3">
+				<div class="step_3_text">
+						STEP 3 - ADD SPLASH
+				</div>
+				<div class="splash_options">
+					<div class="splash-image" id="splash1">
+						<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
+					</div>
+					<div class="splash-image" id="splash2">
+						<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
+					</div>
+					<div class="splash-image" id="splash3">
+						<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
+					</div>
+					<div class="splash-image" id="splash4">
+						<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
+					</div>
+					<div class="splash-image" id="splash5">
+						<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
+					</div>
+					<div class="splash-image" id="splash6">
+						<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
+					</div>
+					<div class="splash-image" id="splash7">
+						<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
+					</div>
+				</div>
+			</div>
+			<div class="step_4">
+				<%= link_to "OK, I'M DONE!", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
+			</div>
 		</div>
 	</div>
-	<div class="image_back" style="position: relative; left: 0; top: 0;" id="image_back">
-		<%= image_tag("imageBack.jpg", alt: "Image", id: "imageBack", style: "position: relative; top: 0; left: 0;") %>
-		<% if @u %>
-			<%= image_tag @u.image_url, style: "position: absolute; top: 47px; left: 196px;", class: "rotateX"%>
-		<% end %>
-		<input type="text" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 68%; left: 27%; height:20px; width:26%; color: #FF0000;">
-	</div>
-	<div class="step_block_1">
-		<div class="step_1">
-			<div class="step_1_text">
-				STEP 1 - UPLOAD A PIC
-			</div>
-			<div class="upload_methods">
-				<div class="upload-method" id="fb-upload">
-					<%= image_tag("fbUpload.png") %>
-				</div>
-				<div class="upload-method" id="device-upload">
-					<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
-						<div class="image-upload">
-						    <label for="file-input">
-								<%= image_tag("deviceUpload.png") %>
-						    </label>
-						    	<%= file_field_tag 'file-input' %>
-						</div>
-					<% end %>
-				</div>
-				<div class="upload-method" id="cam-upload">
-					<%= image_tag("camUpload.png") %>
-				</div>
-			</div>
-		</div>
-		<div class="step_2">
-			<div class="step_2_text">
-				STEP 2 - TYPE YOUR MESSAGE
-			</div>
-			<div class="user_message">
-				<%= text_area_tag 'post', "Message Here!", rows: 8, cols: 40 %>
-			</div>
+	<div class="fb-picture-area">
+		<div class="fb-pictures" id="fb-pictures">
 		</div>
 	</div>
-	<div class="step_block_2">
-		<div class="step_3">
-			<div class="step_3_text">
-					STEP 3 - ADD SPLASH
-			</div>
-			<div class="splash_options">
-				<div class="splash-image" id="splash1">
-					<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
-				</div>
-				<div class="splash-image" id="splash2">
-					<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
-				</div>
-				<div class="splash-image" id="splash3">
-					<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
-				</div>
-				<div class="splash-image" id="splash4">
-					<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
-				</div>
-				<div class="splash-image" id="splash5">
-					<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
-				</div>
-				<div class="splash-image" id="splash6">
-					<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
-				</div>
-				<div class="splash-image" id="splash7">
-					<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
-				</div>
-			</div>
+	<div class="webcam-area">
+		<div class="webcam-element" id="webcam"></div>
+		<div class="webcam-element" id="captured-image">
+			<canvas id="canvas" height="240" width="320" style="border: solid gray 1px;"></canvas>
 		</div>
-		<div class="step_4">
-			<%= link_to "Done", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
+		<div id="webcam-buttons">
+			<button id="click-btn" onclick="javascript:webcam.capture();changeFilter();void(0);">CLICK!</button>
+			<button id="use-image">THIS WILL DO!</button>
 		</div>
 	</div>
 </div>
-<div id="webcam"></div>
-<ul id="cams"></ul>
-<div id="status"></div>
-<div id="img"></div>
-<a href="javascript:webcam.capture();changeFilter();void(0);">Take a picture instantly</a>
-<canvas id="canvas" height="240" width="320" style="border: solid red 2px;"></canvas>
-<button id="test-test">Hey</button>
+<!-- <button id="dummy-login-btn">LOGIN</button> -->
 <script>
-
+var photoArr = [];
 $(document).ready(function(){
-	$("#test-test").click(function(){
+
+	$("#next-page").click(function(){
+	});
+
+	$(".webcam-area").hide();
+	$(".fb-picture-area").hide();
+
+	$("#use-image").click(function(){
 		var canvas = document.getElementById('canvas');
-		var img = canvas.toDataURL();
-		// $('<img>',{src:img}).appendTo($('body')); 
-		$('<img src="'+img+'" style="position: absolute; top: 47px; left: 196px;" class="rotateX"/>').insertAfter("#imageBack");         
+		var img = canvas.toDataURL("image/png");
+		$(".rotateX").remove();
+		$('<img src="'+img+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");   
+		$(".webcam-area").hide();  
+		$(".added_splash").hide(); 
 	});	
+
+	$("#cam-upload").click(function(){
+		   	$(".webcam-area").show();   
+	});
+
+	// $(".webcam-area > *").not("#webcam-buttons").click(function(){
+	// 		$(".webcam-area").hide();   
+	// });
+
+	$(".webcam-area").click(function(e){
+		if ($(e.target).is('#webcam-buttons, #webcam-buttons *')) {
+            return;
+        }
+        $(".webcam-area").hide();
+	});
+
+	$(".fb-picture-area").click(function(){
+			$(".fb-picture-area").hide();   
+	});
+
+	$("#fb-upload").click(function(){
+		$(".fb-picture-area").show();
+		 FB.login(function(response) {
+      	if (response.session) {
+        //user is logged in, reload page
+        window.location.reload(true);
+		getAlbumData();
+
+      } else {
+        // user is not logged in
+        		getAlbumData();
+
+      }
+  }, {scope:'read_stream, publish_stream, offline_access, user_photos, email'});
+	});
+
+	function getAlbumData(){
+		FB.api('/me/photos?fields=source&limit=12', function(response) {
+      	 photoArr = response["data"];
+      	 var count=0;
+      	 for(var i=0; i<photoArr.length-1 && count<12; i++){
+      	 	var imgLink = photoArr[i]["source"];
+      	 	console.log(imgLink);
+      	 	count++;
+      	 	$(".fb-picture-area #fb-pictures").append('<div class="fb-picture-option"><img src="'+imgLink+'" style="height:150px; width:26%; margin:2%" id="fb-picture-option-'+i+'"/></div>');
+      	 }
+   	 });
+	}
+
+
+	$("#dummy-login-btn").click(function(){
+		 FB.login(function(response) {
+      if (response.session) {
+        //user is logged in, reload page
+        window.location.reload(true);
+      } else {
+        // user is not logged in
+      }
+  }, {scope:'read_stream, publish_stream, offline_access, user_photos, email'});
+	});
+
+	
 });
 
 var pos = 0;
@@ -226,11 +317,12 @@ function toggleFilter(obj) {
 	},
 
 	onCapture: function () {
-		webcam.save();
 		jQuery("#flash").css("display", "block");
 		jQuery("#flash").fadeOut(100, function () {
 			jQuery("#flash").css("opacity", 1);
 		});
+		webcam.save();
+
 	},
 
 	debug: function (type, string) {
@@ -298,7 +390,7 @@ function getPageSize() {
 
 window.addEventListener("load", function() {
 
-	jQuery("body").append("<div id=\"flash\"></div>");
+	jQuery(".webcam-area").append("<div id=\"flash\"></div>");
 
 	var canvas = document.getElementById("canvas");
 
