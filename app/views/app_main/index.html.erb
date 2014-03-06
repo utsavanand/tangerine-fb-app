@@ -107,9 +107,17 @@
 <!-- <button id="dummy-login-btn">LOGIN</button> -->
 <script>
 var photoArr = [];
+var didGetFBPhotos = false;
 $(document).ready(function(){
 
-	$("#next-page").click(function(){
+	$('.fb-pictures').on("click", ".fb-picture-option", function() {
+		chosenPicPos = $(this).attr("id").split("-")[3];
+		chosenImgLink = photoArr[3]["source"];
+		// chosenImgLink = "https://en.gravatar.com/userimage/49407123/46ffacde2d447a64f12ecf2c5fcd50c5.jpg";
+		$(".rotateX").remove();
+		$('<img src="'+chosenImgLink+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");
+		$(".fb-picture-area").hide();  
+		$(".added_splash").hide(); 
 	});
 
 	$(".webcam-area").hide();
@@ -125,12 +133,8 @@ $(document).ready(function(){
 	});	
 
 	$("#cam-upload").click(function(){
-		   	$(".webcam-area").show();   
+		$(".webcam-area").show();   
 	});
-
-	// $(".webcam-area > *").not("#webcam-buttons").click(function(){
-	// 		$(".webcam-area").hide();   
-	// });
 
 	$(".webcam-area").click(function(e){
 		if ($(e.target).is('#webcam-buttons, #webcam-buttons *')) {
@@ -139,8 +143,11 @@ $(document).ready(function(){
         $(".webcam-area").hide();
 	});
 
-	$(".fb-picture-area").click(function(){
-			$(".fb-picture-area").hide();   
+	$(".fb-picture-area").click(function(e){
+		if ($(e.target).is('.fb-picture-option, .fb-picture-option *')) {
+            return;
+        }
+		$(".fb-picture-area").hide();   
 	});
 
 	$("#fb-upload").click(function(){
@@ -149,30 +156,31 @@ $(document).ready(function(){
       	if (response.session) {
         //user is logged in, reload page
         window.location.reload(true);
-		getAlbumData();
+        if(!didGetFBPhotos){ getAlbumData(); }
 
       } else {
         // user is not logged in
-        		getAlbumData();
-
+        if(!didGetFBPhotos){ getAlbumData(); }
       }
-  }, {scope:'read_stream, publish_stream, offline_access, user_photos, email'});
+  	}, {scope:'read_stream, publish_stream, offline_access, user_photos, email'});
 	});
 
 	function getAlbumData(){
 		FB.api('/me/photos?fields=source&limit=12', function(response) {
       	 photoArr = response["data"];
       	 var count=0;
+      	 didGetFBPhotos = true;
       	 for(var i=0; i<photoArr.length-1 && count<12; i++){
       	 	var imgLink = photoArr[i]["source"];
-      	 	console.log(imgLink);
       	 	count++;
-      	 	$(".fb-picture-area #fb-pictures").append('<div class="fb-picture-option"><img src="'+imgLink+'" style="height:150px; width:26%; margin:2%" id="fb-picture-option-'+i+'"/></div>');
+      	 	$(".fb-picture-area #fb-pictures").append('<img src="'+imgLink+'" style="height:150px; width:26%; margin:2%" class="fb-picture-option" id="fb-picture-option-'+i+'"/>');
       	 }
    	 });
 	}
 
+	// FB Login - NOT USING CURRENTLY
 
+	/**
 	$("#dummy-login-btn").click(function(){
 		 FB.login(function(response) {
       if (response.session) {
@@ -183,7 +191,7 @@ $(document).ready(function(){
       }
   }, {scope:'read_stream, publish_stream, offline_access, user_photos, email'});
 	});
-
+	**/
 	
 });
 
@@ -463,22 +471,24 @@ $(document).ready(function(){
 		$("#image_back").append("<img src='/assets/"+imgName+".png' alt='Splash 7', id='splash7', class='added_splash', style='position: absolute; top: "+splash_positions[randomSelectPos][0]+"px; left: "+splash_positions[randomSelectPos][1]+"px; height: 80px;, width:80px;' />");
 
 		$("#image_back").html2canvas({
-	    onrendered : function(canvas) {
-	    var img = canvas.toDataURL();
-	    localStorage["avatar"] = img;
-	            }
-	        });
-
-	});
+			logging: true,
+			allowTaint: false,
+			taintTest: true,
+			useCORS: true,
+		    onrendered : function(canvas) {
+		    var img = canvas.toDataURL();
+		    localStorage["avatar"] = img;
+		        }
+		    });
+		});
 
 	$("#text-rotateX").blur(function(){
 		$("#image_back").html2canvas({
 	    onrendered : function(canvas) {
 	    var img = canvas.toDataURL();
 	    localStorage["avatar"] = img;
-	            }
-	        });
-
+	        }
+	    });
 	})
 
 	$("#next-page").click(function(){

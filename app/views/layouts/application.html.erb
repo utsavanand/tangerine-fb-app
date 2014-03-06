@@ -25,7 +25,6 @@
   // whenever someone who was previously logged out tries to log in again, the correct case below 
   // will be handled. 
   FB.Event.subscribe('auth.authResponseChange', function(response) {
-  	console.log(JSON.stringify(response))
     // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
       // The response object is returned with a status field that lets the app know the current
@@ -65,7 +64,6 @@
   // This testAPI() function is only called in those cases. 
   function testAPI() {
 	    FB.api('/me', function(response) {
-     	console.log('User Info: ' + JSON.stringify(response));
     });
   }
 </script>

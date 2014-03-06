@@ -25,22 +25,61 @@ var avatarImg = localStorage["avatar"];
 var blob;
 
 try {
+	 	console.log(avatarImg);
         blob = dataURItoBlob(avatarImg);
     } catch (e) {
         console.log(e);
     }
 
-// Convert a data URI to blob
+function pushRawImageFB(user_id,access_token) {
+	try{
+        blob = dataURItoBlob(localStorage["avatar"]);
+		}catch(e){console.log(e);}
+		var fd = new FormData();
+		fd.append("access_token",access_token);
+		fd.append("source", blob);
+		fd.append("message","Poop");
+		try{
+		   $.ajax({
+		        url:"https://graph.facebook.com/" + user_id + "/photos?access_token=" + access_token,
+		        type:"POST",
+		        data:fd,
+		        processData:false,
+		        contentType:false,
+		        cache:false,
+		        success:function(data){
+		            console.log("success " + data);
+		        },
+		        error:function(shr,status,data){
+		            console.log("error " + data + " Status " + shr.status);
+		        },
+		        complete:function(){
+		            console.log("Ajax Complete");
+		        }
+		    });
+
+		}catch(e){console.log(e);}
+}
+
 function dataURItoBlob(dataURI) {
-    var byteString = atob(dataURI.split(',')[1]);
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs
+    console.log(dataURI);
+    var byteString = window.atob(dataURI.replace('data:image/png;base64,',''));
+    console.log(dataURI);
+
+    // separate out the mime component
+    // write the bytes of the string to an ArrayBuffer
+    //var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(byteString.length);
     for (var i = 0; i < byteString.length; i++) {
         ia[i] = byteString.charCodeAt(i);
     }
-    return new Blob([ab], {
-        type: 'image/png'
-    });
+
+    // write the ArrayBuffer to a blob, and you're done
+    var blob = new Blob([ia], { type: 'image/png' });
+
+    return blob;
 }
 
 var imgURL = "http://myntra.myntassets.com/images/style/properties/Adidas-Men-Grey-Energy-Boost-2-M-Sports-Shoes_a364c3b7f36216e2d583b6174ddd8c58_images_360_480_mini.jpg";
@@ -78,25 +117,36 @@ $(".action-option").click(function(){
 	});
 	}
 	if(choice==4){
-		     var opts = {
-                message : "hey",
-                name : 'Name',
-                link : 'www.kuliza.com',
-                description : 'post description',
-                picture : avatarImg
-            };
+		     // var opts = {
+       //          message : "hey",
+       //          name : 'Name',
+       //          link : 'www.kuliza.com',
+       //          description : 'post description',
+       //          picture : avatarImg
+       //      };
  
-            FB.api('/me/feed', 'post', opts, function(response)
-            {
-                if (!response || response.error)
-                {
-                    alert('Posting error occured'+JSON.stringify(response.error));
-                }
-                else
-                {
-                    alert('Success - Post ID: ' + response.id);
-                }
-            });
+       //      FB.api('/me/feed', 'post', opts, function(response)
+       //      {
+       //          if (!response || response.error)
+       //          {
+       //              alert('Posting error occured'+JSON.stringify(response.error));
+       //          }
+       //          else
+       //          {
+       //              alert('Success - Post ID: ' + response.id);
+       //          }
+       //      });
+		FB.login(function(response) {
+		      if (response.session) {
+		        //user is logged in, reload page
+		        window.location.reload(true);
+		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+		      } else {
+		        // user is not logged in
+		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+		      }
+		  }, {scope:'publish_stream, user_photos'});
+
 	}
 	if(choice==3){
 		FB.ui({method: 'apprequests',
