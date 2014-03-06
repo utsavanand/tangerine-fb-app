@@ -25,7 +25,7 @@
 			<% if @u %>
 				<%= image_tag @u.image_url, style: "position: absolute; top: 51px; left: 208px;", class: "rotateX"%>
 			<% end %>
-			<input type="text" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 67%; left: 27%; height:22px; width:26%; color: #FF0000;">
+			<input type="text" id="msg-box" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 67%; left: 27%; height:22px; width:26%; color: #FF0000;">
 		</div>
 		<div class="step_block_1">
 			<div class="step_1">
@@ -109,6 +109,16 @@
 var photoArr = [];
 var didGetFBPhotos = false;
 $(document).ready(function(){
+
+	$("#msg-box").click(function(){
+		$(this).val('');
+	});
+
+	$("#msg-box").blur(function(){
+		if($(this).val() == ""){
+			$(this).val('Type Your Message Here!');
+		}
+	});
 
 	$('.fb-pictures').on("click", ".fb-picture-option", function() {
 		chosenPicPos = $(this).attr("id").split("-")[3];
