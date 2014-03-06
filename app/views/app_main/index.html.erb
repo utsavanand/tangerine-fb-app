@@ -110,6 +110,11 @@ var photoArr = [];
 var didGetFBPhotos = false;
 $(document).ready(function(){
 
+
+	$(".webcam-area").hide();
+	$(".fb-picture-area").hide();
+	$("#click-btn").hide();
+
 	$("#msg-box").click(function(){
 		$(this).val('');
 	});
@@ -130,8 +135,6 @@ $(document).ready(function(){
 		$(".added_splash").hide(); 
 	});
 
-	$(".webcam-area").hide();
-	$(".fb-picture-area").hide();
 
 	$("#use-image").click(function(){
 		var canvas = document.getElementById('canvas');
@@ -348,7 +351,7 @@ function toggleFilter(obj) {
 	},
 
 	onLoad: function () {
-
+		$("#	click-btn").show();
 		var cams = webcam.getCameraList();
 		for(var i in cams) {
 			jQuery("#cams").append("<li>" + cams[i] + "</li>");
@@ -451,33 +454,16 @@ function randomIntFromInterval(min,max){
 }
 
 $(document).ready(function(){
-	p1.push(40)
-	p1.push(310)
-	p2.push(90)
-	p2.push(330)
-	p3.push(50)
-	p3.push(170)
-	p4.push(140)
-	p4.push(160)
-	p5.push(90)
-	p5.push(150)
-	p6.push(140)
-	p6.push(270)
-	splash_positions.push(p1)
-	splash_positions.push(p2)
-	splash_positions.push(p3)
-	splash_positions.push(p4)
-	splash_positions.push(p5)
-	splash_positions.push(p6)
+
+	var splash_positions = [[40,320],[90,360],[50,160],[140,130],[90,190],[180,390],[180,160],[230,160],[230,360]]; //9-random positions
 
 	$("input[type=file]").change(function(){
 			$("#form-img-upload").submit();
 	});
 
 	$(".splash-image").click(function(){
-		// $("#image_back .added_splash").remove();
 		var imgName = $(this).attr("id")
-		var randomSelectPos = randomIntFromInterval(0,5)
+		var randomSelectPos = randomIntFromInterval(0,8)
 		$("#image_back").append("<img src='/assets/"+imgName+".png' alt='Splash 7', id='splash7', class='added_splash', style='position: absolute; top: "+splash_positions[randomSelectPos][0]+"px; left: "+splash_positions[randomSelectPos][1]+"px; height: 80px;, width:80px;' />");
 
 		$("#image_back").html2canvas({

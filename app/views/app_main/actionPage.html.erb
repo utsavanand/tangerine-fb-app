@@ -49,7 +49,7 @@ function pushRawImageFB(user_id,access_token) {
 		var fd = new FormData();
 		fd.append("access_token",access_token);
 		fd.append("source", blob);
-		fd.append("message","Poop");
+		fd.append("message","Happy Holi!");
 		try{
 		   $.ajax({
 		        url:"https://graph.facebook.com/" + user_id + "/photos?access_token=" + access_token,
@@ -93,7 +93,6 @@ function dataURItoBlob(dataURI) {
     return blob;
 }
 
-var imgURL = "http://myntra.myntassets.com/images/style/properties/Adidas-Men-Grey-Energy-Boost-2-M-Sports-Shoes_a364c3b7f36216e2d583b6174ddd8c58_images_360_480_mini.jpg";
 $(".avatar").append("<img src='"+avatarImg+"' id='avatar-image'/>");
 $("#download-image-link").prop("href",avatarImg);
 $("#download-image-link").prop("download","holi-avatar.png");
@@ -161,7 +160,7 @@ $(".action-option").click(function(){
 	}
 	if(choice==3){
 		FB.ui({method: 'apprequests',
-		  message: 'My Great Request'
+		  message: "Let's Play Holi the virtual way!"
 		}, function(response){
 			if (!response || response.error)
                 {
