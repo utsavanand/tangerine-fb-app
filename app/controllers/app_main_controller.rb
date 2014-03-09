@@ -1,4 +1,4 @@
-require 'Rmagick'
+# require 'Rmagick'
 
 class AppMainController < ApplicationController
 helper :headshot
