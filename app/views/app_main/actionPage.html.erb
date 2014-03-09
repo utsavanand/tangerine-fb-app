@@ -76,9 +76,11 @@ function pushRawImageFB(user_id,access_token) {
 		        contentType:false,
 		        cache:false,
 		        success:function(data){
+		        	alert("Succesfully Posted!")
 		            console.log("success " + data);
 		        },
 		        error:function(shr,status,data){
+		        	alert("Cannot Post, Try again!")
 		            console.log("error " + data + " Status " + shr.status);
 		        },
 		        complete:function(){
@@ -163,7 +165,7 @@ $(".action-option").click(function(){
        //              alert('Success - Post ID: ' + response.id);
        //          }
        //      });
-alert("hello");
+		alert("hello");
 		FB.login(function(response) {
 		      if (response.session) {
 		        //user is logged in, reload page
@@ -182,10 +184,11 @@ alert("hello");
 		}, function(response){
 			if (!response || response.error)
                 {
-                    alert('ERROR'+JSON.stringify(response.error));
+                    alert('ERROR - Please Try Again!');
                 }
                 else
                 {
+                	alert("Request Sent!")
                     alert('Success'+JSON.stringify(response));
                 }
 		});
