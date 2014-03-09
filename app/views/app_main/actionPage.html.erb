@@ -28,6 +28,26 @@
 			<%= image_tag("acop4.png", alt: "Action 4", id:"acop4") %>
 		</div>
 	</div>
+	<div class="coupon-area">
+		<div class="email-for-coupon">
+			<% if @result %>
+			<div class="ack-msg">
+				<font size="5em">
+					Thanks! We will soon mail you your coupons!
+				</font>
+			</div>
+			<% else %>
+				<font size="5em">
+					<%= form_tag do %>
+					<%= label_tag(:email, "Enter email to avail special Holi Coupons:") %>
+			  		<%= text_field_tag(:email) %>
+			 		<%= submit_tag("Done") %>
+			 		<% end %>
+			 	</font>
+			<% end %>
+		</div>
+		
+	</div>
 </div>
 
 <script type="text/javascript">

@@ -15,6 +15,13 @@ helper :headshot
 	end
 
 	def actionPage
-
+		if(params.has_key?("email"))
+			@c = CouponMail.new
+			@c.email = params["email"]
+			@result = false
+			if(@c.save)
+				@result = true
+			end
+		end
 	end
 end

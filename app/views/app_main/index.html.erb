@@ -58,7 +58,7 @@
 		<div class="step_block_2">
 			<div class="step_3">
 				<div class="step_3_text">
-						STEP 3 - ADD SPLASH
+						STEP 2 - ADD SPLASH
 				</div>
 				<div class="splash_options">
 					<div class="splash-image" id="splash1">
@@ -127,12 +127,11 @@ $(document).ready(function(){
 
 	$('.fb-pictures').on("click", ".fb-picture-option", function() {
 		chosenPicPos = $(this).attr("id").split("-")[3];
-		chosenImgLink = photoArr[3]["source"];
-		// chosenImgLink = "https://en.gravatar.com/userimage/49407123/46ffacde2d447a64f12ecf2c5fcd50c5.jpg";
+		chosenImgLink = photoArr[chosenPicPos]["source"];
 		$(".rotateX").remove();
 		$('<img src="'+chosenImgLink+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");
 		$(".fb-picture-area").hide();  
-		$(".added_splash").hide(); 
+		$(".added_splash").remove(); 
 	});
 
 
@@ -142,7 +141,7 @@ $(document).ready(function(){
 		$(".rotateX").remove();
 		$('<img src="'+img+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");   
 		$(".webcam-area").hide();  
-		$(".added_splash").hide(); 
+		$(".added_splash").remove(); 
 	});	
 
 	$("#cam-upload").click(function(){
@@ -351,14 +350,13 @@ function toggleFilter(obj) {
 	},
 
 	onLoad: function () {
-		$("#	click-btn").show();
+		$("#click-btn").show();
 		var cams = webcam.getCameraList();
 		for(var i in cams) {
 			jQuery("#cams").append("<li>" + cams[i] + "</li>");
 		}
 	}
 });
-
 
 function getPageSize() {
 
