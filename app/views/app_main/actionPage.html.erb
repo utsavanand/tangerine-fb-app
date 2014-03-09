@@ -19,12 +19,9 @@
 			</a>	
 		</div>
 		<div class="action-option" id="acop-2">
-			<%= image_tag("acop2.png", alt: "Action 2", id:"acop2") %>
-		</div>
-		<div class="action-option" id="acop-3">
 			<%= image_tag("acop3.png", alt: "Action 3", id:"acop3") %>
 		</div>
-		<div class="action-option" id="acop-4">
+		<div class="action-option" id="acop-3">
 			<%= image_tag("acop4.png", alt: "Action 4", id:"acop4") %>
 		</div>
 	</div>
@@ -118,7 +115,7 @@ $("#download-image-link").prop("href",avatarImg);
 $("#download-image-link").prop("download","holi-avatar.png");
 $(".action-option").click(function(){
 	var choice = $(this).attr("id").split("-")[1];
-	if(choice==2){
+	if(0){
 		var albumID;
 		 FB.api('/me/albums/?fields=name', function(response) {
 		 	if(response && !response.error){
@@ -146,7 +143,7 @@ $(".action-option").click(function(){
 		 }
 	});
 	}
-	if(choice==4){
+	if(choice==3){
 		     // var opts = {
        //          message : "hey",
        //          name : 'Name',
@@ -178,7 +175,7 @@ $(".action-option").click(function(){
 		  }, {scope:'publish_stream, user_photos'});
 
 	}
-	if(choice==3){
+	if(choice==2){
 		FB.ui({method: 'apprequests',
 		  message: "Let's Play Holi the virtual way!"
 		}, function(response){
