@@ -71,8 +71,9 @@
 }
 
 .fb-picture-area{
-	height: 760px;
-	padding-top: 10px;
+	height: 750px;
+	padding: 20px;
+	padding-top: 20px;
 	background-color: gray;
     background-color: rgba(50,50,50,0.9);
 }

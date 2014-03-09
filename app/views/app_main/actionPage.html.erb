@@ -145,27 +145,22 @@ $(".action-option").click(function(){
 		 }
 	});
 	}
+	if(choice==2){
+		FB.ui({method: 'apprequests',
+		  message: "Let's Play Holi the virtual way!"
+		}, function(response){
+			if (!response || response.error)
+                {
+                    alert('ERROR - Please Try Again!');
+                }
+                else
+                {
+                	alert("Request Sent!")
+                }
+		});
+	}
+
 	if(choice==3){
-		     // var opts = {
-       //          message : "hey",
-       //          name : 'Name',
-       //          link : 'www.kuliza.com',
-       //          description : 'post description',
-       //          picture : avatarImg
-       //      };
- 
-       //      FB.api('/me/feed', 'post', opts, function(response)
-       //      {
-       //          if (!response || response.error)
-       //          {
-       //              alert('Posting error occured'+JSON.stringify(response.error));
-       //          }
-       //          else
-       //          {
-       //              alert('Success - Post ID: ' + response.id);
-       //          }
-       //      });
-		alert("hello");
 		FB.login(function(response) {
 		      if (response.session) {
 		        //user is logged in, reload page
@@ -178,20 +173,6 @@ $(".action-option").click(function(){
 		  }, {scope:'publish_stream, user_photos'});
 
 	}
-	if(choice==2){
-		FB.ui({method: 'apprequests',
-		  message: "Let's Play Holi the virtual way!"
-		}, function(response){
-			if (!response || response.error)
-                {
-                    alert('ERROR - Please Try Again!');
-                }
-                else
-                {
-                	alert("Request Sent!")
-                    alert('Success'+JSON.stringify(response));
-                }
-		});
-	}
+	
 });
 </script>

@@ -90,8 +90,12 @@
 		</div>
 	</div>
 	<div class="fb-picture-area">
+	<div>
+		<font color="white" size="5em">TAP ON IMAGE TO SELECT!</font>
+		</div><br/>
 		<div class="fb-pictures" id="fb-pictures">
 		</div>
+
 	</div>
 	<div class="webcam-area">
 		<div class="webcam-element" id="webcam"></div>
@@ -198,14 +202,14 @@ $(document).ready(function(){
 	});
 
 	function getAlbumData(){
-		FB.api('/me/photos?fields=source&limit=12', function(response) {
+		FB.api('/me/photos?fields=source&limit=20', function(response) {
       	 photoArr = response["data"];
       	 var count=0;
       	 didGetFBPhotos = true;
-      	 for(var i=0; i<photoArr.length-1 && count<12; i++){
+      	 for(var i=0; i<photoArr.length-1 && count<20; i++){
       	 	var imgLink = photoArr[i]["source"];
       	 	count++;
-      	 	$(".fb-picture-area #fb-pictures").append('<img src="'+imgLink+'" style="height:150px; width:26%; margin:2%" class="fb-picture-option" id="fb-picture-option-'+i+'"/>');
+      	 	$(".fb-picture-area #fb-pictures").append('<img src="'+imgLink+'" style="height:135px; width:24%; margin:0.2%" class="fb-picture-option" id="fb-picture-option-'+i+'"/>');
       	 }
    	 });
 	}
