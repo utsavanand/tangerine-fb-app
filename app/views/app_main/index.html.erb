@@ -132,6 +132,16 @@ $(document).ready(function(){
 		$('<img src="'+chosenImgLink+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");
 		$(".fb-picture-area").hide();  
 		$(".added_splash").remove(); 
+		$("#image_back").html2canvas({
+		logging: true,
+		allowTaint: false,
+		taintTest: true,
+		useCORS: true,
+	    onrendered : function(canvas) {
+	    var img = canvas.toDataURL();
+	    localStorage["avatar"] = img;
+	        }
+	    });
 	});
 
 
@@ -142,6 +152,16 @@ $(document).ready(function(){
 		$('<img src="'+img+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");   
 		$(".webcam-area").hide();  
 		$(".added_splash").remove(); 
+		$("#image_back").html2canvas({
+		logging: true,
+		allowTaint: false,
+		taintTest: true,
+		useCORS: true,
+	    onrendered : function(canvas) {
+	    var img = canvas.toDataURL();
+	    localStorage["avatar"] = img;
+	        }
+	    });
 	});	
 
 	$("#cam-upload").click(function(){
@@ -478,6 +498,10 @@ $(document).ready(function(){
 
 	$("#text-rotateX").blur(function(){
 		$("#image_back").html2canvas({
+		logging: true,
+		allowTaint: false,
+		taintTest: true,
+		useCORS: true,
 	    onrendered : function(canvas) {
 	    var img = canvas.toDataURL();
 	    localStorage["avatar"] = img;
