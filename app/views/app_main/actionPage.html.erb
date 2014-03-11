@@ -147,6 +147,8 @@ $(".action-option").click(function(){
 	}
 	if(choice==2){
 		FB.ui({method: 'apprequests',
+			title: "Holi Hai!",
+			display: "popup",
 		  message: "Let's Play Holi the virtual way!"
 		}, function(response){
 			if (!response || response.error)
