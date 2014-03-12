@@ -33,14 +33,14 @@
 					STEP 1 - UPLOAD A PIC
 				</div>
 				<div class="upload_methods">
-					<div class="upload-method" id="fb-upload">
+					<div class="upload-method" id="fb-upload" style="cursor: pointer;">
 						<%= image_tag("fbUpload.png") %>
 						<div class="upload-method-text"> Upload From Facebook! </div>
 					</div>
-					<div class="upload-method" id="device-upload">
+					<div class="upload-method" id="device-upload" style="cursor: pointer;">
 						<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
-							<div class="image-upload">
-							    <label for="file-input">
+							<div class="image-upload" style="cursor: pointer;">
+							    <label for="file-input" style="cursor: pointer;">
 									<%= image_tag("deviceUpload.png") %>
 							    </label>
 							    	<%= file_field_tag 'file-input' %>
@@ -48,7 +48,7 @@
 						<% end %>
 							<div class="upload-method-text"> Upload From Device!</div>
 					</div>
-					<div class="upload-method" id="cam-upload">
+					<div class="upload-method" id="cam-upload" style="cursor: pointer;">
 						<%= image_tag("camUpload.png") %>
 						<div class="upload-method-text"> Upload From Webcam!</div>
 					</div>
@@ -61,25 +61,25 @@
 						STEP 2 - ADD SPLASH
 				</div>
 				<div class="splash_options">
-					<div class="splash-image" id="splash1">
+					<div class="splash-image" id="splash1" style="cursor: pointer;">
 						<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
 					</div>
-					<div class="splash-image" id="splash2">
+					<div class="splash-image" id="splash2" style="cursor: pointer;">
 						<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
 					</div>
-					<div class="splash-image" id="splash3">
+					<div class="splash-image" id="splash3" style="cursor: pointer;">
 						<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
 					</div>
-					<div class="splash-image" id="splash4">
+					<div class="splash-image" id="splash4" style="cursor: pointer;">
 						<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
 					</div>
-					<div class="splash-image" id="splash5">
+					<div class="splash-image" id="splash5" style="cursor: pointer;">
 						<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
 					</div>
-					<div class="splash-image" id="splash6">
+					<div class="splash-image" id="splash6" style="cursor: pointer;">
 						<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
 					</div>
-					<div class="splash-image" id="splash7">
+					<div class="splash-image" id="splash7" style="cursor: pointer;">
 						<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
 					</div>
 				</div>
