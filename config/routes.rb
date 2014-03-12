@@ -4,10 +4,10 @@ TangerineFbApp::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'app_main#index'
 
-  match "app_main/" => "app_main#index", via: [:get, :post]
-  match "app_main/action" => "app_main#actionPage", via: [:get, :post]
+  match "/" => "app_main#index", via: [:get, :post]
+  match "/action" => "app_main#actionPage", via: [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
