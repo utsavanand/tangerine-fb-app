@@ -117,7 +117,7 @@ $(document).ready(function(){
 
 	$(".webcam-area").hide();
 	$(".fb-picture-area").hide();
-	$("#click-btn").hide();
+	// $("#click-btn").hide();
 
 	$("#msg-box").click(function(){
 		$(this).val('');
@@ -374,7 +374,7 @@ function toggleFilter(obj) {
 	},
 
 	onLoad: function () {
-		$("#click-btn").show();
+		// $("#click-btn").show();
 		var cams = webcam.getCameraList();
 		for(var i in cams) {
 			jQuery("#cams").append("<li>" + cams[i] + "</li>");
