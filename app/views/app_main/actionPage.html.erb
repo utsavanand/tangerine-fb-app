@@ -62,7 +62,7 @@ try{
 //     }
 console.log("blob - "+blob);
 function pushRawImageFB(user_id,access_token) {
-		console.log("In here - "+JSON.stringify(blob));
+		console.log("In here - "+blob);
 		var fd = new FormData();
 		fd.append("access_token",access_token);
 		console.log("blob2 - "+blob);
@@ -163,12 +163,16 @@ $(".action-option").click(function(){
 		});
 	}
 	if(choice==3){
+		console.log("Here 1");
 		FB.login(function(response) {
+			console.log("here 2");
 		      if (response.session) {
+		      	console.log("here 3");
 		        //user is logged in, reload page
 		        window.location.reload(true);
 		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
 		      } else {
+		      		console.log("here 4");
 		        // user is not logged in
 		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
 		      }
