@@ -209,6 +209,7 @@ $(document).ready(function(){
       	 photoArr = response["data"];
       	 var count=0;
       	 didGetFBPhotos = true;
+      	 if(photoArr.count>0){
       	 for(var i=0; i<photoArr.length-1 && count<20; i++){
       	 	var imgLink = photoArr[i]["source"];
       	 	count++;
@@ -216,7 +217,11 @@ $(document).ready(function(){
       	 }
       	}
       	else{
-      				$(".photo-get-status").html("Can't access your photos try again!");
+      		$(".photo-get-status").html("Did not find any tagged photos!");
+      	}
+      	}
+      	else{
+      		$(".photo-get-status").html("Can't access your photos try again!");
 
       	}
    	 });
