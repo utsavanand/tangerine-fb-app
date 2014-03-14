@@ -165,18 +165,31 @@ $(".action-option").click(function(){
 	}
 	if(choice==3){
 		console.log("Here 1");
-		FB.login(function(response) {
-			console.log("here 2");
-		      if (response.session) {
-		      	console.log("here 3");
-		        //user is logged in, reload page
-		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
-		      } else {
-		      		console.log("here 4");
-		        // user is not logged in
-		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
-		      }
-		  }, {scope:'publish_stream, user_photos'});
+		// FB.login(function(response) {
+		// 	console.log("here 2");
+		// 	console.log("error="+response.error);
+		//       if (response.session) {
+		//       	console.log("here 3");
+		//         //user is logged in, reload page
+		//         pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+		//       } else {
+		//       		console.log("here 4");
+		//         // user is not logged in
+		//         pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+		//       }
+		//   }, {scope:'publish_stream, user_photos'});
+
+			 FB.login(function(response) {
+			   if (response.authResponse) {
+			     console.log('Welcome!  Fetching your information.... ');
+			     pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+			     FB.api('/me', function(response) {
+			       console.log('Good to see you, ' + response.name + '.');
+			     });
+			   } else {
+			     console.log('User cancelled login or did not fully authorize.');
+			   }
+			 });
 
 	}
 	
