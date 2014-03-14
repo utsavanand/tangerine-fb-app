@@ -190,11 +190,12 @@ $(document).ready(function(){
 		$(".fb-picture-area").show();
 		 FB.login(function(response) {
       	if (response.session) {
+      		console.log("hey-1");
         //user is logged in, reload page
-        window.location.reload(true);
         if(!didGetFBPhotos){ getAlbumData(); }
 
       } else {
+      	      		console.log("hey-2");
         // user is not logged in
         if(!didGetFBPhotos){ getAlbumData(); }
       }
@@ -526,4 +527,17 @@ $(document).ready(function(){
 	    });
 	});
 });
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-49009524-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
