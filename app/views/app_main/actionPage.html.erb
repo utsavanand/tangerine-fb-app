@@ -62,9 +62,10 @@ try{
 //     }
 console.log("blob - "+blob);
 function pushRawImageFB(user_id,access_token) {
+		console.log("In here - "+JSON.stringify(blob));
 		var fd = new FormData();
 		fd.append("access_token",access_token);
-		console.log("blob - "+blob);
+		console.log("blob2 - "+blob);
 		fd.append("source", blob);
 		fd.append("message","Happy Holi!");
 		try{
