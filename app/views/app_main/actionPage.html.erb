@@ -51,7 +51,9 @@
 
 var avatarImg = localStorage["avatar"];
 var blob;
-
+try{
+        blob = dataURItoBlob(avatarImg);
+		}catch(e){console.log(e);}
 try {
 	 	console.log(avatarImg);
         blob = dataURItoBlob(avatarImg);
@@ -60,9 +62,6 @@ try {
     }
 
 function pushRawImageFB(user_id,access_token) {
-	try{
-        blob = dataURItoBlob(localStorage["avatar"]);
-		}catch(e){console.log(e);}
 		var fd = new FormData();
 		fd.append("access_token",access_token);
 		fd.append("source", blob);
