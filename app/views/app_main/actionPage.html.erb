@@ -118,7 +118,7 @@ $("#download-image-link").prop("href",avatarImg);
 $("#download-image-link").prop("download","holi-avatar.png");
 $(".action-option").click(function(){
 	var choice = $(this).attr("id").split("-")[1];
-	if(0){
+	if(choice==3){
 		var albumID;
 		 FB.api('/me/albums/?fields=name', function(response) {
 		 	if(response && !response.error){
@@ -162,7 +162,7 @@ $(".action-option").click(function(){
                 }
 		});
 	}
-	if(choice==3){
+	if(0){
 		console.log("Here 1");
 		FB.login(function(response) {
 			console.log("here 2");
