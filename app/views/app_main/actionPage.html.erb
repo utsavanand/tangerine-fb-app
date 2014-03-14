@@ -150,7 +150,7 @@ $(".action-option").click(function(){
 		FB.ui({method: 'apprequests',
 			title: "Holi Hai!",
 			display: "popup",	
-		  	message: "Let's Play Holi the virtual way!"
+		  message: "Let's Play Holi the virtual way!"
 		}, function(response){
 			if (!response || response.error)
                 {
@@ -164,28 +164,18 @@ $(".action-option").click(function(){
 	}
 	if(choice==3){
 		console.log("Here 1");
-		// FB.login(function(response) {
-		// 	console.log("here 2");
-		//       if (response.session) {
-		//       	console.log("here 3");
-		//         //user is logged in, reload page
-		//         window.location.reload(true);
-		//         pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
-		//       } else {
-		//       		console.log("here 4");
-		//         // user is not logged in
-		//         pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
-		//       }
-		//   }, {scope:'publish_stream, user_photos'});
-
 		FB.login(function(response) {
-		    if (response.authResponse) {
-		        // The person logged into your app
+			console.log("here 2");
+		      if (response.session) {
+		      	console.log("here 3");
+		        //user is logged in, reload page
 		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
-		    } else {
-		        // The person cancelled the login dialog
-		    }
-		}, {scope:'publish_stream, user_photos'});
+		      } else {
+		      		console.log("here 4");
+		        // user is not logged in
+		        pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+		      }
+		  }, {scope:'publish_stream, user_photos'});
 
 	}
 	
