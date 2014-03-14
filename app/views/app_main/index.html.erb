@@ -90,9 +90,9 @@
 		</div>
 	</div>
 	<div class="fb-picture-area">
-	<div>
-		<font color="white" size="5em">TAP ON IMAGE TO SELECT!</font>
-		</div><br/>
+	
+		<font color="white" size="5em"><div class="photo-get-status">TAP ON IMAGE TO SELECT!</div></font>
+		<br/>
 		<div class="fb-pictures" id="fb-pictures">
 		</div>
 
@@ -188,15 +188,14 @@ $(document).ready(function(){
 	});
 
 	$("#fb-upload").click(function(){
+		$(".photo-get-status").html("Fetching photos &nbsp; <img src='/assets/fb-post-loader.gif' style='height:10px; width:20px'/>");
 		$(".fb-picture-area").show();
 		 FB.login(function(response) {
       	if (response.session) {
-      		console.log("hey-1");
         //user is logged in, reload page
         if(!didGetFBPhotos){ getAlbumData(); }
 
       } else {
-      	      		console.log("hey-2");
         // user is not logged in
         if(!didGetFBPhotos){ getAlbumData(); }
       }
@@ -205,6 +204,8 @@ $(document).ready(function(){
 
 	function getAlbumData(){
 		FB.api('/me/photos?fields=source&limit=20', function(response) {
+			if(response && !response.error){
+			$(".photo-get-status").html('Tap to select');
       	 photoArr = response["data"];
       	 var count=0;
       	 didGetFBPhotos = true;
@@ -213,6 +214,11 @@ $(document).ready(function(){
       	 	count++;
       	 	$(".fb-picture-area #fb-pictures").append('<img src="'+imgLink+'" style="height:135px; width:24%; margin:0.2%" class="fb-picture-option" id="fb-picture-option-'+i+'"/>');
       	 }
+      	}
+      	else{
+      				$(".photo-get-status").html("Can't access your photos try again!");
+
+      	}
    	 });
 	}
 
