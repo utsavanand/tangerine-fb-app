@@ -19,10 +19,10 @@
 			</a>	
 		</div>
 		<div class="action-option" id="acop-2" style="cursor: pointer;">
-			<%= image_tag("acop3.png", alt: "Action 3", id:"acop3") %>
+			<%= image_tag("acop3.png", alt: "Action 2", id:"acop2") %>
 		</div>
 		<div class="action-option" id="acop-3" style="cursor: pointer;">
-			<%= image_tag("acop4.png", alt: "Action 4", id:"acop4") %>
+			<%= image_tag("acop4.png", alt: "Action 3", id:"acop3") %>
 		</div>
 	</div>
 	<div class="coupon-area">
@@ -119,6 +119,7 @@ $("#download-image-link").prop("download","holi-avatar.png");
 $(".action-option").click(function(){
 	var choice = $(this).attr("id").split("-")[1];
 	if(choice==3){
+		console.log("hey");
 		var albumID;
 		 FB.api('/me/albums/?fields=name', function(response) {
 		 	if(response && !response.error){
