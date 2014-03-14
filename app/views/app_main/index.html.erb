@@ -188,7 +188,7 @@ $(document).ready(function(){
 	});
 
 	$("#fb-upload").click(function(){
-		$(".photo-get-status").html("Fetching photos &nbsp; <img src='/assets/fb-post-loader.gif' style='height:10px; width:20px'/>");
+		$(".photo-get-status").html("Fetching photos &nbsp; <img src='/assets/fb-post-loader.gif' style='height:10px; width:20px; margin-top:240px;'/>");
 		$(".fb-picture-area").show();
 		 FB.login(function(response) {
       	if (response.session) {
