@@ -23,6 +23,7 @@
 		</div>
 		<div class="action-option" id="acop-3" style="cursor: pointer;">
 			<%= image_tag("acop4.png", alt: "Action 3", id:"acop3") %>
+		<div class="post-status"></div>
 		</div>
 	</div>
 	<div class="coupon-area">
@@ -54,20 +55,13 @@ var blob;
 try{
         blob = dataURItoBlob(avatarImg);
 		}catch(e){console.log(e);}
-// try {
-// 	 	console.log(avatarImg);
-//         blob = dataURItoBlob(avatarImg);
-//     } catch (e) {
-//         console.log(e);
-//     }
-console.log("blob - "+blob);
+
 function pushRawImageFB(user_id,access_token) {
-		console.log("In here - "+blob);
 		var fd = new FormData();
 		fd.append("access_token",access_token);
-		console.log("blob2 - "+blob);
 		fd.append("source", blob);
 		fd.append("message","Happy Holi!");
+		$(".post-status").html("<img src='/assets/fb-post-loader.gif' style='height:10px; width:20px'/>");
 		try{
 		   $.ajax({
 		        url:"https://graph.facebook.com/" + user_id + "/photos?access_token=" + access_token,
@@ -78,6 +72,7 @@ function pushRawImageFB(user_id,access_token) {
 		        cache:false,
 		        success:function(data){
 		        	alert("Succesfully Posted!")
+		        	$(".post-status").html('');
 		            console.log("success " + data);
 		        },
 		        error:function(shr,status,data){
