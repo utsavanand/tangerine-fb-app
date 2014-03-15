@@ -209,7 +209,7 @@ $(document).ready(function(){
       	 photoArr = response["data"];
       	 var count=0;
       	 didGetFBPhotos = true;
-      	 if(photoArr.count>0){
+      	 if(photoArr.length>0){
       	 for(var i=0; i<photoArr.length-1 && count<20; i++){
       	 	var imgLink = photoArr[i]["source"];
       	 	count++;
@@ -217,7 +217,7 @@ $(document).ready(function(){
       	 }
       	}
       	else{
-      		$(".photo-get-status").html("<span style='margin-top:240px;'>Did not find any tagged photos!</span>");
+      		$(".photo-get-status").html("<div style='display:block; margin-top:240px;'>Did not find any tagged photos!</span>");
       	}
       	}
       	else{
