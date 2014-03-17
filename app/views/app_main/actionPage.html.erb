@@ -38,7 +38,7 @@
 				<font size="5em">
 					<%= form_tag do %>
 					<%= label_tag(:email, "Enter email to avail special Holi Coupons:") %>
-			  		<%= email_field_tag(:email) %>
+			  		<%= email_field_tag :email,"",:required => "true" %>
 			 		<%= submit_tag("Done") %>
 			 		<% end %>
 			 	</font>
