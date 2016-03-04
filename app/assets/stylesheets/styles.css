@@ -26,7 +26,7 @@
 }
 
 .image_back{
-	margin-top: 14%;
+	margin-top: 5%;
 	text-align: center;
 }
 
@@ -115,6 +115,16 @@
 	width: 100%;
 }
 
+.step_0{
+	display: inline-block;
+	margin-top:15%;
+	padding: 1%;
+	width:60%;
+	text-align: left;
+	color: red;
+	font-size: 1.5em;
+}
+
 .step_1{
 	display: inline-block;
 	margin-top:1%;
@@ -151,8 +161,8 @@
 }
 
 .step_3 .splash_options img{
-	height: 10%;
-	width: 12%;
+	height: 16%;
+	width: 40%;
 }
 
 
@@ -213,6 +223,17 @@
 .upload-method img{
 	height: 70%;
 	width: 70%;
+	margin-right: 1%; 
+}
+
+.available-background{
+	display: inline-block;
+	color: gray;
+}
+
+.available-background img{
+	height: 75%;
+	width: 75%;
 	margin-right: 1%; 
 }
 

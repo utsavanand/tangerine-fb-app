@@ -20,8 +20,24 @@
 				<font size="4em" color="orange">&nbsp;&nbsp;COLOR YOUR FRIENDS THE VIRTUAL WAY</font>
 			</div>
 		</div>
+		<div class="step_0">
+			<div class="step_0_text">
+				STEP 1 - SELECT A BACKGROUND
+			</div>
+			<div class="available_backgrounds">
+				<div class="available-background" id="bg-1" style="cursor: pointer;">
+					<%= image_tag("bg-1.png") %>
+				</div>
+				<div class="available-background" id="bg-2" style="cursor: pointer;">
+					<%= image_tag("bg-2.png") %>
+				</div>
+				<div class="available-background" id="bg-3" style="cursor: pointer;">
+					<%= image_tag("bg-3.png") %>
+				</div>
+			</div>
+		</div>
 		<div class="image_back" style="position: relative; left: 0; top: 0;" id="image_back">
-			<%= image_tag("imageBack.jpg", alt: "Image", id: "imageBack", style: "position: relative; top: 0; left: 0;") %>
+			<%= image_tag("bg-1.png", alt: "Image", id: "imageBack", style: "position: relative; top: 0; left: 0;") %>
 			<% if @u %>
 				<%= image_tag @u.image_url, style: "position: absolute; top: 51px; left: 208px;", class: "rotateX"%>
 			<% end %>
@@ -58,29 +74,20 @@
 		<div class="step_block_2">
 			<div class="step_3">
 				<div class="step_3_text">
-						STEP 2 - ADD SPLASH
+						STEP 2 - ADD MESSAGE
 				</div>
 				<div class="splash_options">
 					<div class="splash-image" id="splash1" style="cursor: pointer;">
-						<%= image_tag("splash1.png", alt: "Splash 1", id:"splash1") %>
+						<%= image_tag("Q-1.png", alt: "Splash 1", id:"splash1") %>
 					</div>
 					<div class="splash-image" id="splash2" style="cursor: pointer;">
-						<%= image_tag("splash2.png", alt: "Splash 2", id:"splash2") %>
+						<%= image_tag("Q-2.png", alt: "Splash 2", id:"splash2") %>
 					</div>
 					<div class="splash-image" id="splash3" style="cursor: pointer;">
-						<%= image_tag("splash3.png", alt: "Splash 3", id:"splash3") %>
+						<%= image_tag("Q-3.png", alt: "Splash 3", id:"splash3") %>
 					</div>
 					<div class="splash-image" id="splash4" style="cursor: pointer;">
-						<%= image_tag("splash4.png", alt: "Splash 4", id:"splash4") %>
-					</div>
-					<div class="splash-image" id="splash5" style="cursor: pointer;">
-						<%= image_tag("splash5.png", alt: "Splash 5", id:"splash5") %>
-					</div>
-					<div class="splash-image" id="splash6" style="cursor: pointer;">
-						<%= image_tag("splash6.png", alt: "Splash 6", id:"splash6") %>
-					</div>
-					<div class="splash-image" id="splash7" style="cursor: pointer;">
-						<%= image_tag("splash7.png", alt: "Splash 7", id:"splash7") %>
+						<%= image_tag("Q-4.png", alt: "Splash 4", id:"splash4") %>
 					</div>
 				</div>
 			</div>
@@ -199,8 +206,16 @@ $(document).ready(function(){
         // user is not logged in
         if(!didGetFBPhotos){ getAlbumData(); }
       }
-  	}, {scope:'read_stream, publish_stream, offline_access, user_photos, email'});
+  	}, {scope:'publish_actions, user_photos, email'});
 	});
+
+	$(".available-background").click(function(){
+
+		var current_image_url = "/assets/"+$(this).attr("id")+".png"
+		console.log(current_image_url)
+		//Change background
+		$("#imageBack").attr("src", current_image_url)
+	})
 
 	function getAlbumData(){
 		FB.api('/me/photos?fields=source&limit=20', function(response) {
