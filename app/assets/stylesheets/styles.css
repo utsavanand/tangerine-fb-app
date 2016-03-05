@@ -1,14 +1,13 @@
 
+
 @font-face {
-  font-family: "moon_flower_bold"	;
-  src: url("/assets/fonts/moon_flower_bold.ttf") format("truetype"); /* For IE */
-  src: local("moon_flower_bold"), url("/assets/moon_flower_bold.ttf") format("truetype"); /* For non-IE */
+    font-family: 'moon_flower';
+    src: url('/assets/moon_flower.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "moon_flower"	;
-  src: url("/assets/fonts/moon_flower.ttf") format("truetype"); /* For IE */
-  src: local("moon_flower"), url("/assets/moon_flower.ttf") format("truetype"); /* For non-IE */
+    font-family: 'moon_flower_bold';
+    src: url('/assets/moon_flower_bold.ttf') format('truetype');
 }
 
 .page{
