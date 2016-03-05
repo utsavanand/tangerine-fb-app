@@ -117,11 +117,13 @@ ImgApi.prototype = {
   saveImageAndUpdateUrl: function(){
     var img = localStorage.avatar;
     $('body').addClass('is-uploading');
+    $(".post-status").html("<img src='/assets/fb-post-loader.gif' style='height:10px; width:20px'/>");
     return this.saveImage( img )
       .then( function( data ){
         console.log( data.imageUrl );
         localStorage.imageUrl = data.imageUrl;
         updateTweetBtn( data.imageUrl );
+        $(".post-status").html("");
         $('body').removeClass('is-uploading');
         return data;
       });
