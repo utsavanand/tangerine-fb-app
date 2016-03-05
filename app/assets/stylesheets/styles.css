@@ -51,7 +51,7 @@
 }
 
 #bannerBack{
-	height: 100%;
+	height: 1350px;
 	width: 100%;
 }
 
@@ -61,7 +61,7 @@
 	width:100%;
 	text-align: left;
 	color: red;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	position: absolute;
 	margin-top: 35%;
 	margin-left: 10%
@@ -99,7 +99,7 @@
 }
 
 .avatar{
-	margin: 1%;
+	margin: 5%;
 }
 
 .avatar #avatar-image{
@@ -122,32 +122,33 @@
 	position: absolute;
 	text-align: left;
 	margin-left: 10%;
+	font-size: 1.3em;
 }
 
 .step_2 img{
-	padding-right: 25%;
+	padding-right: 45%;
 }
 
 .step_2 .step_2_text, .step_1 .step_1_text, .step_3 .step_3_text{
 	margin-bottom: 2%;
 	text-align: left;
 	color: red;
-	font-size: 1.5em;
 }
 
 .step_3{
-	top:210%;
+	top:209%;
 	width: 90%;
 	text-align: left;
 	position: absolute;
 	margin-left: 10%;
 	color: red;
-	font-size: 1.5em;
+	font-size: 1.3em;
 }
 
 .step_3 img{
-	height: 35%;
-	width: 40%;
+	padding: 0.5%;
+	height: 32%;
+	width: 35%;
 }
 
 /*.step_3{
@@ -165,10 +166,10 @@
 
 
 .step_4{
-	text-align: center;
-	font-size: 1.5em;
-	top: 250%;
-	width: 90%;
+	text-align: right;
+	font-size: 1.6em;
+	top: 235%;
+	width:95%;
 	position: absolute;
 }
 
