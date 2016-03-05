@@ -26,7 +26,8 @@
 			<% if @u %>
 				<%= image_tag @u.image_url, style: "position: absolute; top: 4%; left: 71.2%;", class: "rotateX"%>
 			<% end %>
-			<input type="text" id="msg-box" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 17%; left: 37.5%; height:40%; width:29%; color: #FF0000;">
+			<textarea id="msg-box" placeholder=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 17%; left: 37.5%; height:40%; width:29%; color: #FF0000;">Type Your Message Here! Or chose one from below.
+			</textarea>
 		</div>
 		<div class="step_2">
 			<div class="step_2_text">
@@ -34,19 +35,19 @@
 			</div>
 			<div class="upload_methods">
 				<div class="upload-method" id="fb-upload" style="cursor: pointer;">
-					<%= image_tag("fbUpload.png") %>
-					<div class="upload-method-text"> Upload From Facebook! </div>
+					<%= image_tag("fbUp.png") %>
+					<div class="upload-method-text"> Upload From Facebook </div>
 				</div>
 				<div class="upload-method" id="device-upload" style="cursor: pointer;">
 					<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
 						<div class="image-upload" style="cursor: pointer;">
 						    <label for="file-input" style="cursor: pointer;">
-								<%= image_tag("deviceUpload.png") %>
+								<%= image_tag("deviceUp.png") %>
 						    </label>
 						    	<%= file_field_tag 'file-input' %>
 						</div>
 					<% end %>
-						<div class="upload-method-text"> Upload From Device!</div>
+						<div class="upload-method-text"> Upload From Device</div>
 				</div>
 				<!--<div class="upload-method" id="cam-upload" style="cursor: pointer;">
 					<%= image_tag("camUpload.png") %>
@@ -59,22 +60,22 @@
 					STEP 3 - ADD MESSAGE
 			</div>
 			<div class="splash_options">
-				<div class="splash-image" id="splash1" style="cursor: pointer;">
-					<%= image_tag("Q-1.png", alt: "Splash 1", id:"splash1") %>
+				<div class="msg-image" id="splash1" style="cursor: pointer;">
+					<%= image_tag("Q-1.png", alt: "Splash 1", id:"msg1") %>
 				</div>
-				<div class="splash-image" id="splash2" style="cursor: pointer;">
-					<%= image_tag("Q-2.png", alt: "Splash 2", id:"splash2") %>
+				<div class="msg-image" id="splash2" style="cursor: pointer;">
+					<%= image_tag("Q-2.png", alt: "Splash 2", id:"msg2") %>
 				</div>
-				<div class="splash-image" id="splash3" style="cursor: pointer;">
-					<%= image_tag("Q-3.png", alt: "Splash 3", id:"splash3") %>
+				<div class="msg-image" id="splash3" style="cursor: pointer;">
+					<%= image_tag("Q-3.png", alt: "Splash 3", id:"msg3") %>
 				</div>
-				<div class="splash-image" id="splash4" style="cursor: pointer;">
-					<%= image_tag("Q-4.png", alt: "Splash 4", id:"splash4") %>
+				<div class="msg-image" id="splash4" style="cursor: pointer;">
+					<%= image_tag("Q-4.png", alt: "Splash 4", id:"msg4") %>
 				</div>
 			</div>
 		</div>
 		<div class="step_4">
-			<%= link_to "OK, I'M DONE!", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
+			<%= link_to "SUBMIT!", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
 		</div>
 	</div>
 	<div class="fb-picture-area">
@@ -131,23 +132,39 @@ $(document).ready(function(){
 		$("#imageBack_"+clicked_image).show();
 	});
 
+	$("#msg1").click(function(){
+		$('#msg-box').val('You are lovely and amazing!');
+	});
+
+	$("#msg2").click(function(){
+		$('#msg-box').val('You are awesome and I love you!');
+	});
+
+	$("#msg3").click(function(){
+		$('#msg-box').val('You are the best!');
+	});
+
+	$("#msg4").click(function(){
+		$('#msg-box').val('Thank you for always being there for me. You rock!');
+	});
+
 	$('.fb-pictures').on("click", ".fb-picture-option", function() {
 		chosenPicPos = $(this).attr("id").split("-")[3];
 		chosenImgLink = photoArr[chosenPicPos]["source"];
 		$(".rotateX").remove();
-		$('<img src="'+chosenImgLink+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");
+		$('<img src="'+chosenImgLink+'" style="position: absolute; top: 4%; left: 71.2%;" class="rotateX"/>').insertAfter(".bgo");
 		$(".fb-picture-area").hide();  
 		$(".added_splash").remove(); 
-		$("#image_back").html2canvas({
-		logging: true,
-		allowTaint: false,
-		taintTest: true,
-		useCORS: true,
-	    onrendered : function(canvas) {
-	    var img = canvas.toDataURL();
-	    localStorage["avatar"] = img;
-	        }
-	    });
+		$(".image_back").html2canvas({
+			logging: true,
+			allowTaint: false,
+			taintTest: true,
+			useCORS: true,
+		    onrendered : function(canvas) {
+		    var img = canvas.toDataURL();
+		    localStorage["avatar"] = img;
+		        }
+		});
 	});
 
 
@@ -158,7 +175,7 @@ $(document).ready(function(){
 		$('<img src="'+img+'" style="position: absolute; top: 51px; left: 208px;" class="rotateX"/>').insertAfter("#imageBack");   
 		$(".webcam-area").hide();  
 		$(".added_splash").remove(); 
-		$("#image_back").html2canvas({
+		$(".image_back").html2canvas({
 		logging: true,
 		allowTaint: false,
 		taintTest: true,
@@ -212,14 +229,14 @@ $(document).ready(function(){
 	})
 
 	function getAlbumData(){
-		FB.api('/me/photos?fields=source&limit=20', function(response) {
+		FB.api('/me/photos?fields=source&limit=40', function(response) {
 			if(response && !response.error){
 			$(".photo-get-status").html('Tap to select');
       	 photoArr = response["data"];
       	 var count=0;
       	 didGetFBPhotos = true;
       	 if(photoArr.length>0){
-      	 for(var i=0; i<photoArr.length-1 && count<20; i++){
+      	 for(var i=0; i<photoArr.length-1 && count<40; i++){
       	 	var imgLink = photoArr[i]["source"];
       	 	count++;
       	 	$(".fb-picture-area #fb-pictures").append('<img src="'+imgLink+'" style="height:135px; width:24%; margin:0.2%" class="fb-picture-option" id="fb-picture-option-'+i+'"/>');
@@ -231,7 +248,6 @@ $(document).ready(function(){
       	}
       	else{
       		$(".photo-get-status").html("Can't access your photos try again!");
-
       	}
    	 });
 	}
@@ -510,7 +526,7 @@ $(document).ready(function(){
 		var randomSelectPos = randomIntFromInterval(0,8)
 		$("#image_back").append("<img src='/assets/"+imgName+".png' alt='Splash 7', id='splash7', class='added_splash', style='position: absolute; top: "+splash_positions[randomSelectPos][0]+"px; left: "+splash_positions[randomSelectPos][1]+"px; height: 80px;, width:80px;' />");
 
-		$("#image_back").html2canvas({
+		$(".image_back").html2canvas({
 			logging: true,
 			allowTaint: false,
 			taintTest: true,
@@ -536,7 +552,7 @@ $(document).ready(function(){
 	// })
 
 	$("#next-page").click(function(){
-		$("#image_back").html2canvas({
+		$(".image_back").html2canvas({
 		logging: true,
 		allowTaint: false,
 		taintTest: true,
