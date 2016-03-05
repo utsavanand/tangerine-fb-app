@@ -1,99 +1,80 @@
 <div class="page">
 	<div class="app-area">
-		<!--<div class="banner">
-			<div class="banner_back">
-				<%= image_tag("bannerBack.png", alt: "Banner", id: "bannerBack") %>
-			</div>
-			<div class="banner_text">
-				<font size="6em">
-					<font color="red">H</font>
-					<font color="blue">A</font>
-					<font color="green">P</font>
-					<font color="orange">P</font>
-					<font color="purple">Y</font>&nbsp;&nbsp;
-					<font color="brown">H</font>
-					<font color="pink">O</font>
-					<font color="violet">L</font>
-					<font color="green">I</font>
-					<font color="magenta">!</font>
-				</font>
-				<font size="4em" color="orange">&nbsp;&nbsp;COLOR YOUR FRIENDS THE VIRTUAL WAY</font>
-			</div>
-		</div>-->
-		<div class="step_0">
-			<div class="step_0_text">
+		<div class="banner">
+			<%= image_tag("Banner.jpg", alt: "Banner", id: "bannerBack") %>
+		</div>
+		<div class="step_1">
+			<div class="step_1_text">
 				STEP 1 - SELECT A BACKGROUND
 			</div>
 			<div class="available_backgrounds">
 				<div class="available-background" id="bg-1" style="cursor: pointer;">
-					<%= image_tag("bg-1.png") %>
+					<%= image_tag("bgo1.png") %>
 				</div>
 				<div class="available-background" id="bg-2" style="cursor: pointer;">
-					<%= image_tag("bg-2.png") %>
+					<%= image_tag("bgo2.png") %>
 				</div>
 				<div class="available-background" id="bg-3" style="cursor: pointer;">
-					<%= image_tag("bg-3.png") %>
+					<%= image_tag("bgo3.png") %>
 				</div>
 			</div>
 		</div>
-		<div class="image_back" style="position: relative; left: 0; top: 0;" id="image_back">
-			<%= image_tag("bg-1.png", alt: "Image", id: "imageBack", style: "position: relative; top: 0; left: 0;") %>
+		<div class="image_back">
+			<%= image_tag("bg-1.png", alt: "Image", class: "bgo", id: "imageBack_1", style: "position:relative; top: 0; left: 0;") %>
+			<%= image_tag("bg-2.png", alt: "Image", class: "bgo", id: "imageBack_2", style: "position: relative; top: 0; left: 0;") %>
+			<%= image_tag("bg-3.png", alt: "Image", class: "bgo", id: "imageBack_3", style: "position: relative; top: 0; left: 0;") %>
 			<% if @u %>
-				<%= image_tag @u.image_url, style: "position: absolute; top: 51px; left: 208px;", class: "rotateX"%>
+				<%= image_tag @u.image_url, style: "position: absolute; top: 4%; left: 71.2%;", class: "rotateX"%>
 			<% end %>
-			<input type="text" id="msg-box" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 67%; left: 27%; height:22px; width:26%; color: #FF0000;">
+			<input type="text" id="msg-box" value=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 17%; left: 37.5%; height:40%; width:29%; color: #FF0000;">
 		</div>
-		<div class="step_block_1">
-			<div class="step_1">
-				<div class="step_1_text">
-					STEP 1 - UPLOAD A PIC
+		<div class="step_2">
+			<div class="step_2_text">
+				STEP 2 - UPLOAD A PIC
+			</div>
+			<div class="upload_methods">
+				<div class="upload-method" id="fb-upload" style="cursor: pointer;">
+					<%= image_tag("fbUpload.png") %>
+					<div class="upload-method-text"> Upload From Facebook! </div>
 				</div>
-				<div class="upload_methods">
-					<div class="upload-method" id="fb-upload" style="cursor: pointer;">
-						<%= image_tag("fbUpload.png") %>
-						<div class="upload-method-text"> Upload From Facebook! </div>
-					</div>
-					<div class="upload-method" id="device-upload" style="cursor: pointer;">
-						<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
-							<div class="image-upload" style="cursor: pointer;">
-							    <label for="file-input" style="cursor: pointer;">
-									<%= image_tag("deviceUpload.png") %>
-							    </label>
-							    	<%= file_field_tag 'file-input' %>
-							</div>
-						<% end %>
-							<div class="upload-method-text"> Upload From Device!</div>
-					</div>
-					<!--<div class="upload-method" id="cam-upload" style="cursor: pointer;">
-						<%= image_tag("camUpload.png") %>
-						<div class="upload-method-text"> Upload From Webcam!</div>
-					</div>-->
+				<div class="upload-method" id="device-upload" style="cursor: pointer;">
+					<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
+						<div class="image-upload" style="cursor: pointer;">
+						    <label for="file-input" style="cursor: pointer;">
+								<%= image_tag("deviceUpload.png") %>
+						    </label>
+						    	<%= file_field_tag 'file-input' %>
+						</div>
+					<% end %>
+						<div class="upload-method-text"> Upload From Device!</div>
 				</div>
+				<!--<div class="upload-method" id="cam-upload" style="cursor: pointer;">
+					<%= image_tag("camUpload.png") %>
+					<div class="upload-method-text"> Upload From Webcam!</div>
+				</div>-->
 			</div>
 		</div>
-		<div class="step_block_2">
-			<div class="step_3">
-				<div class="step_3_text">
-						STEP 2 - ADD MESSAGE
+		<div class="step_3">
+			<div class="step_3_text">
+					STEP 3 - ADD MESSAGE
+			</div>
+			<div class="splash_options">
+				<div class="splash-image" id="splash1" style="cursor: pointer;">
+					<%= image_tag("M-1.png", alt: "Splash 1", id:"splash1") %>
 				</div>
-				<div class="splash_options">
-					<div class="splash-image" id="splash1" style="cursor: pointer;">
-						<%= image_tag("Q-1.png", alt: "Splash 1", id:"splash1") %>
-					</div>
-					<div class="splash-image" id="splash2" style="cursor: pointer;">
-						<%= image_tag("Q-2.png", alt: "Splash 2", id:"splash2") %>
-					</div>
-					<div class="splash-image" id="splash3" style="cursor: pointer;">
-						<%= image_tag("Q-3.png", alt: "Splash 3", id:"splash3") %>
-					</div>
-					<div class="splash-image" id="splash4" style="cursor: pointer;">
-						<%= image_tag("Q-4.png", alt: "Splash 4", id:"splash4") %>
-					</div>
+				<div class="splash-image" id="splash2" style="cursor: pointer;">
+					<%= image_tag("M-1.png", alt: "Splash 2", id:"splash2") %>
+				</div>
+				<div class="splash-image" id="splash3" style="cursor: pointer;">
+					<%= image_tag("M-1.png", alt: "Splash 3", id:"splash3") %>
+				</div>
+				<div class="splash-image" id="splash4" style="cursor: pointer;">
+					<%= image_tag("M-1.png", alt: "Splash 4", id:"splash4") %>
 				</div>
 			</div>
-			<div class="step_4">
-				<%= link_to "OK, I'M DONE!", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
-			</div>
+		</div>
+		<div class="step_4">
+			<%= link_to "OK, I'M DONE!", {controller: "app_main", action: "actionPage"} , :id => "next-page" %>
 		</div>
 	</div>
 	<div class="fb-picture-area">
@@ -104,7 +85,7 @@
 		</div>
 
 	</div>
-	<div class="webcam-area">
+	<!--<div class="webcam-area">
 		<div class="webcam-element" id="webcam"></div>
 		<div class="webcam-element" id="captured-image">
 			<canvas id="canvas" height="240" width="320" style="border: solid gray 1px;"></canvas>
@@ -114,7 +95,7 @@
 			<button id="click-btn" onclick="javascript:webcam.capture();changeFilter();void(0);">&nbsp;&nbsp;CLICK&nbsp;&nbsp;</button>
 			<button id="use-image">&nbsp;&nbsp;USE THIS&nbsp;&nbsp;</button>
 		</div>
-	</div>
+	</div>-->
 </div>
 <!-- <button id="dummy-login-btn">LOGIN</button> -->
 <script>
@@ -122,9 +103,10 @@ var photoArr = [];
 var didGetFBPhotos = false;
 $(document).ready(function(){
 
-
 	$(".webcam-area").hide();
 	$(".fb-picture-area").hide();
+	$("#imageBack_2").hide();
+	$("#imageBack_3").hide();
 	// $("#click-btn").hide();
 
 	$("#msg-box").click(function(){
@@ -135,6 +117,18 @@ $(document).ready(function(){
 		if($(this).val() == ""){
 			$(this).val('Type Your Message Here!');
 		}
+	});
+
+	$(".available-background").click(function(){
+		var clicked_image = $(this).attr("id").split("-")[1];
+		console.log($(this).attr("id"));
+		for (i=1; i<=3; i++){
+			if(i!=clicked_image){
+				$("#imageBack_"+i).hide();
+				console.log("Hiding" + clicked_image);
+			}
+		}
+		$("#imageBack_"+clicked_image).show();
 	});
 
 	$('.fb-pictures').on("click", ".fb-picture-option", function() {

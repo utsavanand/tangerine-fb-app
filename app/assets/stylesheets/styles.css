@@ -11,35 +11,6 @@
   src: local("moon_flower"), url("/assets/moon_flower.ttf") format("truetype"); /* For non-IE */
 }
 
-.banner{
-	position: relative;
-}
-
-.banner_back, .banner_text{
-	text-align: center;
-	position: absolute;
-}
-
-.banner_text{
-	left:32%;
-	margin-top:4.5%;
-}
-
-.image_back{
-	margin-top: 5%;
-	text-align: center;
-}
-
-#bannerBack{
-	height: 100px;
-	width: 100%;
-}
-
-#imageBack{
-	height: 30%;
-	width: 60%;
-}
-
 .page{
 	margin: auto;
 	height: 100%;
@@ -58,10 +29,10 @@
 
 .app-area, .webcam-area, .fb-picture-area{
 	margin: auto;
-	height: 600px;
+	height: 540px;
 	width: 810px;
 	text-align: center;
-	position: absolute;
+	position: relative;
 }
 
 .webcam-area{
@@ -76,6 +47,39 @@
 	padding-top: 20px;
 	background-color: gray;
     background-color: rgba(50,50,50,0.9);
+}
+
+.banner{
+	position: absolute;
+	text-align: center;
+}
+
+#bannerBack{
+	height: 100%;
+	width: 100%;
+}
+
+.step_1{
+/*	display: inline-block;
+*/	padding: 1%;
+	width:100%;
+	text-align: left;
+	color: red;
+	font-size: 1.5em;
+	position: absolute;
+	margin-top: 35%;
+	margin-left: 10%
+}
+
+.image_back{
+	top: 80%;
+	position: absolute;
+	text-align: center;
+}
+
+.bgo{
+	height: 40%;
+	width: 80%;
 }
 
 .action-page{
@@ -107,47 +111,47 @@
 	width: 100%;
 }
 
-.step_block_1{
+/*.step_block_1{
 	width:100%;
 }
 
 .step_block_2{
 	width: 100%;
 }
+*/
 
-.step_0{
-	display: inline-block;
-	margin-top:15%;
-	padding: 1%;
-	width:60%;
+.step_2{
+	top:165%;
+	padding: 5%;
+	width:90%;
+	position: absolute;
 	text-align: left;
-	color: red;
-	font-size: 1.5em;
+	margin-left: 10%;
 }
 
-.step_1{
-	display: inline-block;
-	margin-top:1%;
-	padding: 1%;
-	width:60%;
-}
-
-.step_1 .step_1_text{
+.step_2 .step_2_text, .step_1 .step_1_text, .step_3 .step_3_text{
 	margin-bottom: 2%;
 	text-align: left;
 	color: red;
 	font-size: 1.5em;
 }
 
-.step_2{
-	display: inline-block;
-	margin-top:1%;
-	width: 49%;
-	text-align: right;
+.step_3{
+	top:205%;
+	width: 90%;
+	text-align: left;
+	position: absolute;
+	margin-left: 10%;
+	color: red;
+	font-size: 1.5em;
 }
 
+.step_3 img{
+	height: 25%;
+	width: 40%;
+}
 
-.step_3{
+/*.step_3{
 	display: inline-block;
 	margin-top: 0%;
 	text-align: left;
@@ -158,25 +162,20 @@
 
 .step_3 .splash_options{
 	margin-top: 2%;
-}
-
-.step_3 .splash_options img{
-	height: 16%;
-	width: 40%;
-}
+}*/
 
 
 .step_4{
-	display: inline;
-	text-align: left;
-	padding-bottom: 100px;
+	text-align: center;
 	font-size: 2.5em;
+	top: 245%;
+	width: 90%;
+	position: absolute;
 }
 
 .step_4, a{
 	text-decoration: none;
 		color: orange;
-
 }
 
 .image-upload > input
@@ -188,7 +187,7 @@
 	display: inline;
 }
 
-.rotateX, .text-rotateX{
+.text-rotateX{
 	-webkit-transform: rotate(-6deg);
     -moz-transform: rotate(-6deg);
     -o-transform: rotate(-6deg);
@@ -196,9 +195,19 @@
     transform: rotate(-6deg);
 }
 
+input {
+    border: 0;
+    background: transparent /* the important bit */
+}
+
 .rotateX{
-    width: 26.5%;
-    height: 50%;
+    width: 16%;
+    height: 30%;
+    -webkit-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
 }
 
  .actions-options{
