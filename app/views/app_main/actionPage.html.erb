@@ -49,7 +49,7 @@ function pushRawImageFB(user_id,access_token) {
 		var fd = new FormData();
 		fd.append("access_token",access_token);
 		fd.append("source", blob);
-		fd.append("message","Happy Holi!");
+		fd.append("message","#BecauseSheMatters - Happy Women's Day from India First Life");
 		$(".post-status").html("<img src='/assets/fb-post-loader.gif' style='height:10px; width:20px'/>");
 		try{
 		   $.ajax({
@@ -97,7 +97,7 @@ function dataURItoBlob(dataURI) {
 
 $(".avatar").append("<img src='"+avatarImg+"' id='avatar-image'/>");
 $("#download-image-link").prop("href",avatarImg);
-$("#download-image-link").prop("download","holi-avatar.png");
+$("#download-image-link").prop("download","BecauseIndiaFirstLife.png");
 $(".action-option").not('#acop-2').click(function(){
 	var choice = $(this).attr("id").split("-")[1];
 	if(0){
