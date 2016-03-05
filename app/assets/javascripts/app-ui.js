@@ -41,8 +41,8 @@ function updateTweetBtn ( url ){
 
 
 function ImgApi(){
-  // this.apiUrl = 'http://www.becauseindiafirstlife.com/img-api/v1'
-  this.apiUrl = 'https://localhost:5667';
+  this.apiUrl = 'http://www.becauseindiafirstlife.com/img-api/v1';
+  // this.apiUrl = 'https://localhost:5667';
 }
 
 
