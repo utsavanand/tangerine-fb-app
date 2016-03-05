@@ -265,3 +265,14 @@ form, form div { display: inline; }
 .msg-image{
 	display: inline;
 }
+
+
+
+
+/* --------Harish------- */
+
+body.is-uploading #acop2{
+  opacity: 0.4;
+}
+
+/* --------Harish------- */
