@@ -147,7 +147,7 @@
 }
 
 .step_3 img{
-	height: 25%;
+	height: 35%;
 	width: 40%;
 }
 
@@ -175,7 +175,7 @@
 
 .step_4, a{
 	text-decoration: none;
-		color: orange;
+	color: orange;
 }
 
 .image-upload > input
