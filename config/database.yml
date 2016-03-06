@@ -35,5 +35,5 @@ production:
   database: tangerineFbApp_production
   pool: 5
   username: root
-  password: root
+  password: admin1234
   host: localhost
