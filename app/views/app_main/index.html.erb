@@ -20,9 +20,9 @@
 			</div>
 		</div>
 		<div class="image_back">
-			<%= image_tag("bg-1.png", alt: "Image", class: "bgo", id: "imageBack_1", style: "position:relative; top: 0; left: 0;") %>
-			<%= image_tag("bg-2.png", alt: "Image", class: "bgo", id: "imageBack_2", style: "position: relative; top: 0; left: 0;") %>
-			<%= image_tag("bg-3.png", alt: "Image", class: "bgo", id: "imageBack_3", style: "position: relative; top: 0; left: 0;") %>
+			<%= image_tag("bg-1.jpg", alt: "Image", class: "bgo", id: "imageBack_1", style: "position:relative; top: 0; left: 0;") %>
+			<%= image_tag("bg-2.jpg", alt: "Image", class: "bgo", id: "imageBack_2", style: "position: relative; top: 0; left: 0;") %>
+			<%= image_tag("bg-3.jpg", alt: "Image", class: "bgo", id: "imageBack_3", style: "position: relative; top: 0; left: 0;") %>
 			<% if @u %>
 				<%= image_tag @u.image_url, style: "position: absolute; top: 4%; left: 71.2%;", class: "rotateX"%>
 			<% end %>
@@ -34,10 +34,10 @@
 				STEP 2 - UPLOAD A PIC
 			</div>
 			<div class="upload_methods">
-				<div class="upload-method" id="fb-upload" style="cursor: pointer;">
+				<!--<div class="upload-method" id="fb-upload" style="cursor: pointer;">
 					<%= image_tag("fbUp.png") %>
 					<div class="upload-method-text"> Upload From Facebook </div>
-				</div>
+				</div>-->
 				<div class="upload-method" id="device-upload" style="cursor: pointer;">
 					<%= form_tag({action: :index}, multipart: true, id:"form-img-upload") do %>
 						<div class="image-upload" style="cursor: pointer;">
