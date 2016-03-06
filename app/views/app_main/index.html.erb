@@ -217,7 +217,7 @@ $(document).ready(function(){
         // user is not logged in
         if(!didGetFBPhotos){ getAlbumData(); }
       }
-  	}, {scope:'publish_actions, user_photos, email'});
+  	}, {scope:'publish_actions, user_photos, email, user_photos'});
 	});
 
 	$(".available-background").click(function(){
@@ -229,13 +229,19 @@ $(document).ready(function(){
 	})
 
 	function getAlbumData(){
+		alert("hello");
 		FB.api('/me/photos?fields=source&limit=40', function(response) {
-			if(response && !response.error){
+					alert("hello2");
+
+		if(response && !response.error){
+					alert("hello3");
+
 			$(".photo-get-status").html('Tap to select');
       	 photoArr = response["data"];
+      	 console.log(response);
       	 var count=0;
       	 didGetFBPhotos = true;
-      	 if(photoArr.length>0){
+      	if(photoArr.length>0){
       	 for(var i=0; i<photoArr.length-1 && count<40; i++){
       	 	var imgLink = photoArr[i]["source"];
       	 	count++;
