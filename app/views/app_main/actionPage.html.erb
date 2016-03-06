@@ -11,9 +11,14 @@
 			<%= image_tag("share-on-twitter.png", alt: "Action 2", id:"acop2") %>
 		</a>
 		<div class="action-option" id="acop-3" style="cursor: pointer;">
+		<a href="" id="fb-share-url" target="_blank">
 			<%= image_tag("share-on-facebook.png", alt: "Action 3", id:"acop3") %>
-		<div class="post-status"></div>
+		  </a>
+
 		</div>
+		<div class="post-status"></div>
+
+	</div>
 	</div>
 	<!--<div class="coupon-area">
 		<div class="email-for-coupon">
@@ -38,6 +43,48 @@
 </div>
 
 <script type="text/javascript">
+
+// var feedurl;
+// var api = "https://www.facebook.com/dialog/feed";
+// var app_id = "app_id=470660683142345";
+// var display = "display=popup";
+// var name = "name=BecauseSheMatters"
+// var link= "link="+localStorage.imageUrl;
+// var redirect_uri = "redirect_uri=https://localhost:3000";
+// feedurl = api + "?"
+// 			 + app_id + "&"
+// 			 + display + "&"
+// 			 + link + "&"
+// 			 + redirect_uri + "&"
+// 			 + name;
+// alert(feedurl);
+
+function fbshare(){
+	console.log("heyhey");
+	// FB.login(function(response) {
+	// 		 	console.log("testtest")
+	// 		   if (response.authResponse) {
+	// 		     console.log('Welcome!  Fetching your information.... ');
+	// 		      	pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+	// 		      FB.api('/me', function(response) {
+	// 		        console.log('Good to see you, ' + response.name + '.');
+	// 		      });
+	// 		   } else {
+	// 		     console.log('User cancelled login or did not fully authorize.');
+	// 		   }
+	// 		 }, {scope:'publish_actions'});
+// alert("http://"+localStorage.imageUrl)
+// 	FB.ui({
+//   method: 'feed',
+//   link: localStorage.imageUrl,
+//   caption: "Happy Women's Day from India First Life - http://www.indiafirstlife.com/",
+//   name: '#BecauseSheMatters'
+// }, function(response){
+// });
+
+
+}
+
   /* ---- From app-ui.js ---- */
 /* globals window, localStorage, FormData, $, Blob, atob, unescape */
 
@@ -122,6 +169,9 @@ ImgApi.prototype = {
       .then( function( data ){
         console.log( data.imageUrl );
         localStorage.imageUrl = data.imageUrl;
+        var feedurl = "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=" + localStorage.imageUrl;
+		alert(feedurl);
+		$('#fb-share-url').attr('href',feedurl);
         updateTweetBtn( data.imageUrl );
         $(".post-status").html("");
         $('body').removeClass('is-uploading');
@@ -151,6 +201,7 @@ try{
 		}catch(e){console.log(e);}
 
 function pushRawImageFB(user_id,access_token) {
+		console.log("woah");
 		var fd = new FormData();
 		fd.append("access_token",access_token);
 		fd.append("source", blob);
@@ -266,24 +317,29 @@ $(".action-option").not('#acop-2').click(function(){
 		//         pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
 		//       }
 		//   }, {scope:'publish_stream, user_photos'});
+			// event.preventDefault();
+			//  FB.login(function(response) {
+			//  	console.log("testtest")
+			//    if (response.authResponse) {
+			//      console.log('Welcome!  Fetching your information.... ');
+			//       	pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
+			//       FB.api('/me', function(response) {
+			//         console.log('Good to see you, ' + response.name + '.');
+			//       });
+			//    } else {
+			//      console.log('User cancelled login or did not fully authorize.');
+			//    }
+			//  }, {scope:'publish_actions, user_photos, email'});
 
-			 FB.login(function(response) {
-			   if (response.authResponse) {
-			     console.log('Welcome!  Fetching your information.... ');
-			     pushRawImageFB(response.authResponse.userID, response.authResponse.accessToken);
-			     // FB.api('/me', function(response) {
-			     //   console.log('Good to see you, ' + response.name + '.');
-			     // });
-			   } else {
-			     console.log('User cancelled login or did not fully authorize.');
-			   }
-			 });
-
+	
 	}
 	
 });
+
+
 </script>
 <script type="text/javascript">
+window.parent.scroll(0,0);
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-49009524-1']);
