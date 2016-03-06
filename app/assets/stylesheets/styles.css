@@ -272,8 +272,16 @@ form, form div { display: inline; }
 
 /* --------Harish------- */
 
-body.is-uploading #acop2{
+body.is-uploading a.action-option {
   opacity: 0.4;
 }
+
+.post-status {
+  display: none;
+}
+body.is-uploading .post-status {
+  display: block;
+}
+
 
 /* --------Harish------- */
