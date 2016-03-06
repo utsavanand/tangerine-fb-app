@@ -51,7 +51,7 @@
 }
 
 #bannerBack{
-	height: 1350px;
+	height: 1380px;
 	width: 100%;
 }
 
@@ -147,7 +147,7 @@
 
 .step_3 img{
 	padding: 0.5%;
-	height: 32%;
+	height: 34%;
 	width: 35%;
 }
 
@@ -166,9 +166,9 @@
 
 
 .step_4{
-	text-align: right;
+	text-align: center;
 	font-size: 1.6em;
-	top: 235%;
+	top: 247%;
 	width:95%;
 	position: absolute;
 }

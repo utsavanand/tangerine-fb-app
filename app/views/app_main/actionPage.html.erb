@@ -170,7 +170,6 @@ ImgApi.prototype = {
         console.log( data.imageUrl );
         localStorage.imageUrl = data.imageUrl;
         var feedurl = "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=" + localStorage.imageUrl;
-		alert(feedurl);
 		$('#fb-share-url').attr('href',feedurl);
         updateTweetBtn( data.imageUrl );
         $(".post-status").html("");
