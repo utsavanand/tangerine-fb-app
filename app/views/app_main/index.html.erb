@@ -26,7 +26,7 @@
 			<% if @u %>
 				<%= image_tag @u.image_url, style: "position: absolute; top: 4%; left: 71.2%;", class: "rotateX"%>
 			<% end %>
-			<textarea id="msg-box" placeholder=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 17%; left: 37.5%; height:40%; width:29%; color: #FF0000;">Type Your Message Here! Or chose one from below.
+			<textarea id="msg-box" placeholder=" Type Your Message Here!" class="text-rotateX" style="position: absolute; top: 18%; left: 42.7%; height:42%; width:24%; color: #FF0000;">Type Your Message Here! Or chose one from below.
 			</textarea>
 		</div>
 		<div class="step_2">
@@ -230,12 +230,14 @@ $(document).ready(function(){
 
 	function getAlbumData(){
 		FB.api('/me/photos?fields=source&limit=40', function(response) {
-			if(response && !response.error){
-			$(".photo-get-status").html('Tap to select');
+
+		if(response && !response.error){
+		$(".photo-get-status").html('Tap to select');
       	 photoArr = response["data"];
+      	 console.log(response);
       	 var count=0;
       	 didGetFBPhotos = true;
-      	 if(photoArr.length>0){
+      	if(photoArr.length>0){
       	 for(var i=0; i<photoArr.length-1 && count<40; i++){
       	 	var imgLink = photoArr[i]["source"];
       	 	count++;
