@@ -10,10 +10,10 @@
 		<a class="action-option" id="acop-2" target="_blank" >
 			<%= image_tag("share-on-twitter.png", alt: "Action 2", id:"acop2") %>
 		</a>
-		<div class="action-option" id="acop-3" style="cursor: pointer;">
+		<a class="action-option" id="acop-3" style="cursor: pointer;">
 			<%= image_tag("share-on-facebook.png", alt: "Action 3", id:"acop3") %>
 		<div class="post-status"></div>
-		</div>
+		</a>
 	</div>
 	<!--<div class="coupon-area">
 		<div class="email-for-coupon">
@@ -78,12 +78,23 @@ function updateTweetBtn ( url ){
   elm.attr('href', link + params );
 }
 
+function updateFbButton( url ){
+  var elm = $('#acop-3');
+  var link ='https://www.facebook.com/dialog/share?';
+  var params = $.param({
+    app_id: window.fbAppId,
+    href: url,
+    display: 'popup',
+  });
+  elm.attr('href', link + params );
+}
+
 
 
 
 function ImgApi(){
-  this.apiUrl = 'https://www.becauseindiafirstlife.com/img-api/v1';
-  // this.apiUrl = 'https://localhost:5667';
+  // this.apiUrl = 'https://www.becauseindiafirstlife.com/img-api/v1';
+  this.apiUrl = 'https://localhost:5667';
 }
 
 
@@ -122,6 +133,7 @@ ImgApi.prototype = {
         console.log( data.imageUrl );
         localStorage.imageUrl = data.imageUrl;
         updateTweetBtn( data.imageUrl );
+        updateFbButton( data.imageUrl );
         $('body').removeClass('is-uploading');
         return data;
       });
@@ -201,7 +213,7 @@ function dataURItoBlob(dataURI) {
 $(".avatar").append("<img src='"+avatarImg+"' id='avatar-image'/>");
 $("#download-image-link").prop("href",avatarImg);
 $("#download-image-link").prop("download","BecauseIndiaFirstLife.png");
-$(".action-option").not('#acop-2').click(function(){
+$(".action-option").not('a').click(function(){
 	var choice = $(this).attr("id").split("-")[1];
 	if(0){
 		console.log("hey");
